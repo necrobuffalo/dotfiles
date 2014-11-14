@@ -5,3 +5,22 @@ XTerm*selectToClipboard: true
 XTerm*locale: true
 
 XTerm*metaSendsEscape: true
+
+! URxvt 
+
+URxvt.scrollBar: false
+
+! clickable urls
+URxvt.perl-ext-common: default, matcher
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.matcher.button: 1
+
+! APPEARANCE
+
+! transparency
+URxvt*.transparent: true
+URxvt*.shading: 20 
+
+! colors
+*foreground: #b2b2b2
+*background: #080808
