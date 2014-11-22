@@ -11,7 +11,7 @@ XTerm*metaSendsEscape: true
 URxvt.scrollBar: false
 
 ! clickable urls
-URxvt.perl-ext-common: default, matcher
+URxvt.perl-ext-common: default, matcher, selection-to-clipboard
 URxvt.url-launcher: /usr/bin/chromium
 URxvt.matcher.button: 1
 
@@ -24,3 +24,9 @@ URxvt*.shading: 20
 ! colors
 *foreground: #b2b2b2
 *background: #080808
+
+! font
+URxvt.font: xft:Droid Sans Mono:size=10
+URxvt.letterSpace: -1
+! URxvt.font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+
