@@ -1,32 +1,46 @@
-XTerm*foreground: rgb:b2/b2/b2
-XTerm*background: rgb:08/08/08
+xterm*termName: xterm-256color
+xterm*locale: true
 
-XTerm*selectToClipboard: true
-XTerm*locale: true
+xterm*metaSendsEscape: true
 
-XTerm*metaSendsEscape: true
+xterm*faceName: Dejavu Sans Mono:size=8
 
-! URxvt 
+xterm*bellIsUrgent: true
 
-URxvt.scrollBar: false
+!*foreground: #b2b2b2
+!*background: #080808
+!xterm*reverseVideo: on
 
-! clickable urls
-URxvt.perl-ext-common: default, matcher, selection-to-clipboard
-URxvt.url-launcher: /usr/bin/chromium
-URxvt.matcher.button: 1
+*foreground: #DDCCBB
 
-! APPEARANCE
-
-! transparency
-URxvt*.transparent: true
-URxvt*.shading: 20 
-
-! colors
-*foreground: #b2b2b2
-*background: #080808
-
-! font
-URxvt.font: xft:Droid Sans Mono:size=10
-URxvt.letterSpace: -1
-! URxvt.font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-
+! Brown BG
+! !*background: #30251D
+!
+! ! Grey BG
+*background: #151515
+!
+!
+! !black
+*color0:     #393939
+*color8:     #AF875F
+! !red
+*color1:     #BF1E2D
+*color9:     #E7212A
+! !green
+*color2:     #9DBA3A
+*color10:    #A9C938
+! !yellow
+*color3:     #F5B915
+*color11:    #F7D325
+! !blue
+*color4:     #1CA1DB
+*color12:    #00AFDA
+! !magenta
+*color5:     #652F90
+*color13:    #894E9F
+! !cyan
+*color6:     #EA7D24
+*color14:    #F79321
+! !white
+*color7:     #E7E8E9
+*color15:    #F3F3F4
