@@ -50,11 +50,10 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/taron/.config/awesome/default/theme.lua")
 
-awful.util.spawn_with_shell("xcompmgr &")
 awful.util.spawn_with_shell("xscreensaver -no-splash &")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "konsole"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 browser = "chromium"
@@ -98,7 +97,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "irc", "www", 3, 4, 5, 6 }, s, layouts[1])
+    tags[s] = awful.tag({ "IRC", "WWW", 3, 4, 5, 6 }, s, layouts[1])
 end
 -- }}}
 
@@ -129,9 +128,11 @@ mytextclock = awful.widget.textclock()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
+bottom_wibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
+mymusic = {}
 mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 1, awful.tag.viewonly),
                     awful.button({ modkey }, 1, awful.client.movetotag),
@@ -197,16 +198,19 @@ for s = 1, screen.count() do
     -- Obvious ALSA volume widget
     myvolume = obvious.volume_alsa(1, "Master")
 
-    mymusic = wibox.widget.textbox()
-    bashets.register("/home/taron/bin/mpd_spotify.sh", {widget = mymusic, separator="asdfkljasdkfjld", format=" $1", update_time=1})
-    bashets.start()
+    mymusic[s] = wibox.widget.textbox()
+    bashets.register("/home/taron/bin/mpd_spotify.sh", {widget = mymusic[s], separator="asdfkljasdkfjld", format=" $1", update_time=1})
 
     -- Vicious widgets
     mybattery = wibox.widget.textbox()
     vicious.register(mybattery, vicious.widgets.bat, "  $2% $3 remaining ", 13, "BAT0")
 
+    -------------------------------------------------------------------------------------------
+    -- Layout
+    -------------------------------------------------------------------------------------------
+
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "bottom", height = "21",  screen = s })
+    mywibox[s] = awful.wibox({ position = "top", height = "15",  screen = s })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -231,7 +235,17 @@ for s = 1, screen.count() do
 
     mywibox[s]:set_widget(layout)
 
+    -- Same thing with the bottom wibox
+    bottom_wibox[s] = awful.wibox({ position = "bottom", height = "15", screen = s })
+
+    local right_layout = wibox.layout.fixed.horizontal()
+    right_layout:add(mymusic[s])
+    local layout = wibox.layout.align.horizontal()
+    layout:set_right(right_layout)
+    bottom_wibox[s]:set_widget(layout)
 end
+
+bashets.start()
 -- }}}
 
 -- {{{ Mouse bindings
@@ -398,12 +412,12 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
+    { rule = { class = "konsole" },
+      properties = { border_width = 0, fullscreen = true } },
+    { rule = { class = "Wine" },
+      properties = { border_width = 0, floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },

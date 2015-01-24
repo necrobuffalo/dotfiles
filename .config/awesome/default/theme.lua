@@ -4,10 +4,10 @@
 
 theme = {}
 
-theme.font          = "Dejavu Sans Mono 8"
+theme.font          = "Terminus 8"
 
 theme.bg_normal     = "#000000"
-theme.bg_focus      = "#cf1111"
+theme.bg_focus      = "#870000"
 theme.bg_urgent     = "#a0b137"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -19,7 +19,7 @@ theme.fg_minimize   = "#ffffff"
 
 theme.border_width  = 1
 theme.border_normal = "#000000"
-theme.border_focus  = "#cf1111"
+theme.border_focus  = "#870000"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -35,8 +35,8 @@ theme.border_marked = "#91231c"
 
 
 -- Display the taglist squares
--- theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
--- theme.taglist_squares_unsel = "/usr/share/awesome/themes/default/taglist/squarew.png"
+theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
+theme.taglist_squares_unsel = "/usr/share/awesome/themes/default/taglist/squarew.png"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -74,7 +74,8 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/taron/Downloads/drown_in_sorrow.jpg"
+-- theme.wallpaper = "/home/taron/Downloads/drown_in_sorrow.jpg"
+-- theme.wallpaper_cmd = "/home/taron/.fehbg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
