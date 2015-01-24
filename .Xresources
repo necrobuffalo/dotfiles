@@ -1,11 +1,16 @@
+
+! Xterm specific settings
 xterm*termName: xterm-256color
 xterm*locale: true
 
 xterm*metaSendsEscape: true
 
-xterm*faceName: Dejavu Sans Mono:size=8
+xterm*faceName: Dejavu Sans Mono:size=10
 
 xterm*bellIsUrgent: true
+xterm*visualBell: true
+
+URxvt.font: xft:Dejavu Sans Mono:size=10
 
 !*foreground: #b2b2b2
 !*background: #080808
