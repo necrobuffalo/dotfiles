@@ -10,7 +10,6 @@ zstyle :compinstall filename '/home/taron/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-#
 
 
 # Set up virtualenvwrapper
@@ -20,15 +19,20 @@ source /usr/bin/virtualenvwrapper.sh
 source /usr/share/git/completion/git-prompt.sh
 
 # Prompt
-PROMPT="┌ %(?..%?)%B%F{88}%n%f%b@%m:%~
+PROMPT="┌ %(?..%?)%B%F{red}%n%f%b@%m:%~
 └─ %# "
 RPROMPT="%(?..:()"
 
 EDITOR=vim
 
-if `echo $TERM | grep -i xterm > /dev/null` ; then
-    TERM=xterm-256color
-fi
+PATH=~/bin:$PATH
 
 # No idea what this does
 fpath=(~/.zsh $fpath)
+
+for r in $HOME/.zsh/*.zsh; do
+    if [[ $DEBUG > 0 ]]; then
+       echo "zsh: sourcing $r"
+    fi
+    source $r
+done

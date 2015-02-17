@@ -11,15 +11,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
--- Obvious widgets
-require("obvious.volume_alsa")
-require("obvious.battery")
-
 -- Bashets
 bashets = require("bashets")
-
--- Vicious
-vicious = require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -51,12 +44,14 @@ end
 beautiful.init("/home/taron/.config/awesome/default/theme.lua")
 
 awful.util.spawn_with_shell("xscreensaver -no-splash &")
+awful.util.spawn_with_shell("wpa_gui -t &")
+awful.util.spawn_with_shell("/home/taron/.fehbg &")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "konsole"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-browser = "chromium"
+browser = "firefox-developer"
 lock = "xscreensaver-command -lock"
 
 -- Default modkey.
@@ -97,7 +92,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "IRC", "WWW", 3, 4, 5, 6 }, s, layouts[1])
+    tags[s] = awful.tag({ "IRC", "WWW", "SH", 4, 5, 6, 7, "MPD", "STEAM" }, s, layouts[1])
 end
 -- }}}
 
@@ -115,16 +110,11 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- {{{ Top Wibox
--- Create a textclock widget
-mytextclock = awful.widget.textclock()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -133,6 +123,9 @@ mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
 mymusic = {}
+acpi = {}
+quote = {}
+time = {}
 mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 1, awful.tag.viewonly),
                     awful.button({ modkey }, 1, awful.client.movetotag),
@@ -195,15 +188,14 @@ for s = 1, screen.count() do
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
-    -- Obvious ALSA volume widget
-    myvolume = obvious.volume_alsa(1, "Master")
-
     mymusic[s] = wibox.widget.textbox()
     bashets.register("/home/taron/bin/mpd_spotify.sh", {widget = mymusic[s], separator="asdfkljasdkfjld", format=" $1", update_time=1})
-
-    -- Vicious widgets
-    mybattery = wibox.widget.textbox()
-    vicious.register(mybattery, vicious.widgets.bat, "  $2% $3 remaining ", 13, "BAT0")
+    acpi[s] = wibox.widget.textbox()
+    bashets.register("/home/taron/bin/acpi.sh", {widget = acpi[s], separator="asdfjalskdfjasldkfjas", format="$1", update_time=5})
+    -- quote[s] = wibox.widget.textbox()
+    -- bashets.register("/home/taron/bin/quote.sh", {widget = quote[s], separator="asdflkjsadklfjlskjdf", format="$1", update_time=10})
+    time[s] = wibox.widget.textbox()
+    bashets.register("/home/taron/bin/time.sh", {widget = time[s], separator="alksdjfkljsdfjkl", format="$1", update=1})
 
     -------------------------------------------------------------------------------------------
     -- Layout
@@ -214,7 +206,6 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
-    -- left_layout:add(mylauncher)
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
 
@@ -222,9 +213,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     -- right_layout:add(mymusic)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    -- right_layout:add(obvious.battery())
-    right_layout:add(mybattery)
-    right_layout:add(mytextclock)
+    right_layout:add(acpi[s])
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -240,7 +229,10 @@ for s = 1, screen.count() do
 
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(mymusic[s])
+    local left_layout = wibox.layout.fixed.horizontal()
+    left_layout:add(time[s])
     local layout = wibox.layout.align.horizontal()
+    layout:set_left(left_layout)
     layout:set_right(right_layout)
     bottom_wibox[s]:set_widget(layout)
 end
@@ -317,11 +309,6 @@ globalkeys = awful.util.table.join(
               end),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end),
-
-    -- Volume control
-    awful.key({}, "XF86AudioMute", function () obvious.volume_alsa.mute(1, "Master") end),
-    awful.key({}, "XF86AudioLowerVolume", function () obvious.volume_alsa.lower(1, "Master") end),
-    awful.key({}, "XF86AudioRaiseVolume", function () obvious.volume_alsa.raise(1, "Master") end),
 
     -- Xlock
     awful.key({ modkey, "Shift" }, "x", function () awful.util.spawn(lock) end)
@@ -414,8 +401,6 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
-    { rule = { class = "konsole" },
-      properties = { border_width = 0, fullscreen = true } },
     { rule = { class = "Wine" },
       properties = { border_width = 0, floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.

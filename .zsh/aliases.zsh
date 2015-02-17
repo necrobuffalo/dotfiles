@@ -1,0 +1,5 @@
+alias grep='grep --color=auto'
+alias hid='echo .*'
+alias ls='ls --color=auto'
+alias lsh='ls --color=auto -d .*'
+alias which='which --all'

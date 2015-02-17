@@ -1,7 +1,7 @@
 #!/bin/bash
 
-title=$(playerctl metadata title)
-artist=$(playerctl metadata artist)
+title=$(playerctl metadata title 2>/dev/null)
+artist=$(playerctl metadata artist 2>/dev/null)
 
 if [ -z $title ] ; then
     echo "♫ Not playing"

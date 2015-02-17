@@ -7,7 +7,7 @@ theme = {}
 theme.font          = "Terminus 8"
 
 theme.bg_normal     = "#000000"
-theme.bg_focus      = "#870000"
+theme.bg_focus      = "#af0000"
 theme.bg_urgent     = "#a0b137"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -19,7 +19,7 @@ theme.fg_minimize   = "#ffffff"
 
 theme.border_width  = 1
 theme.border_normal = "#000000"
-theme.border_focus  = "#870000"
+theme.border_focus  = "#af0000"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -75,7 +75,7 @@ theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/defau
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
 -- theme.wallpaper = "/home/taron/Downloads/drown_in_sorrow.jpg"
--- theme.wallpaper_cmd = "/home/taron/.fehbg"
+theme.wallpaper_cmd = "/home/taron/.fehbg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
