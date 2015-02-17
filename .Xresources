@@ -1,51 +1,60 @@
+!URxvt.transparent: true
+!URxvt.shading: 40
 
-! Xterm specific settings
-xterm*termName: xterm-256color
-xterm*locale: true
+URxvt.font: xft:Droid Sans Mono:size=10
+URxvt.letterSpace: -1
+! URxvt.reverseVideo: on
 
-xterm*metaSendsEscape: true
+URxvt.urgentOnBell: true
+URxvt.visualBell: true
 
-xterm*faceName: Dejavu Sans Mono:size=10
+URxvt.scrollBar: false
 
-xterm*bellIsUrgent: true
-xterm*visualBell: true
+URxvt.perl-ext-common: default,font-size,matcher
+URxvt.url-launcher: /usr/bin/firefox-developer
+URxvt.matcher.button: 1
 
-URxvt.font: xft:Dejavu Sans Mono:size=10
+! Keysyms
+URxvt.keysym.C-Up:  perl:font-size:increase
+URxvt.keysym.C-Down:    perl:font-size:decrease
+URxvt.keysym.C-S-Up:    perl:font-size:incglobal
+URxvt.keysym.C-S-Down:  perl:font-size:decglobal
 
-!*foreground: #b2b2b2
-!*background: #080808
-!xterm*reverseVideo: on
+! Colors
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
 
-*foreground: #DDCCBB
+! ! black
+*.color0:       #2e3436
+*.color8:       #555753
 
-! Brown BG
-! !*background: #30251D
-!
-! ! Grey BG
-*background: #151515
-!
-!
-! !black
-*color0:     #393939
-*color8:     #AF875F
-! !red
-*color1:     #BF1E2D
-*color9:     #E7212A
-! !green
-*color2:     #9DBA3A
-*color10:    #A9C938
-! !yellow
-*color3:     #F5B915
-*color11:    #F7D325
-! !blue
-*color4:     #1CA1DB
-*color12:    #00AFDA
-! !magenta
-*color5:     #652F90
-*color13:    #894E9F
-! !cyan
-*color6:     #EA7D24
-*color14:    #F79321
-! !white
-*color7:     #E7E8E9
-*color15:    #F3F3F4
+! ! red
+*.color1:       #a31604
+*.color9:       #c60001
+
+! ! green
+*.color2:       #447241
+*.color10:      #27a343
+
+! ! yellow
+*.color3:       #c1951a
+*.color11:      #d5a30e
+
+! ! blue
+*.color4:       #425387
+*.color12:      #4a5a8d
+
+! ! magenta
+*.color5:       #965d98
+*.color13:      #893c8c
+
+! ! cyan
+*.color6:       #06989a
+*.color14:      #12bccb
+
+! ! white
+*.color7:       #d3d7cf
+*.color15:      #eeeeec
+
