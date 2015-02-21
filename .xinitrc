@@ -15,3 +15,7 @@ fi
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
+
+xrdb ~/.Xresources
+setxkbmap -option ctrl:nocaps
+exec awesome
