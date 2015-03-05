@@ -1,8 +1,8 @@
 !URxvt.transparent: true
 !URxvt.shading: 40
 
-URxvt.font: xft:Droid Sans Mono:size=10
-URxvt.letterSpace: -1
+URxvt.font: xft:Source Code Pro:size=9
+URxvt.letterSpace: -2
 ! URxvt.reverseVideo: on
 
 URxvt.urgentOnBell: true
@@ -27,7 +27,8 @@ URxvt.keysym.C-S-Down:  perl:font-size:decglobal
 *.cursorColor:  #ffffff
 
 ! ! black
-*.color0:       #2e3436
+!*.color0:       #2e3436
+*.color0:       #000000
 *.color8:       #555753
 
 ! ! red

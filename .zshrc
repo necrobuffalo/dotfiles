@@ -19,7 +19,7 @@ source /usr/bin/virtualenvwrapper.sh
 source /usr/share/git/completion/git-prompt.sh
 
 # Prompt
-PROMPT="┌ %(?..%?)%B%F{red}%n%f%b@%m:%~
+PROMPT="┌ %(?..%?)%B%F{green}%n%f%b@%m:%~
 └─ %# "
 RPROMPT="%(?..:()"
 

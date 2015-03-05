@@ -18,4 +18,9 @@ fi
 
 xrdb ~/.Xresources
 setxkbmap -option ctrl:nocaps
-exec awesome
+
+xscreensaver -no-splash &
+~/.fehbg
+
+#exec awesome
+exec xmonad
