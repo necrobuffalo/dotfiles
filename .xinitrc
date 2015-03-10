@@ -19,7 +19,8 @@ fi
 xrdb ~/.Xresources
 setxkbmap -option ctrl:nocaps
 
-xscreensaver -no-splash &
+gnome-screensaver &
+#xscreensaver -no-splash &
 ~/.fehbg
 
 #exec awesome

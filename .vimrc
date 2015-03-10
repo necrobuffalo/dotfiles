@@ -29,11 +29,8 @@ set shiftwidth=4                "tabs are 4 spaces (:help shiftwidth)
 
 "ruby/puppet mode
 autocmd BufRead,BufNewFile *.pp set expandtab tabstop=2 shiftwidth=2
-"set expandtab                  "don't uses spaces ever, a tab key is a jump of spaces
-"set tabstop=2                  "tabs are 4 spaces (:help tabstop)
-"set shiftwidth=2               "tabs are 4 spaces (:help shiftwidth)
-
-
+autocmd BufRead,BufNewFile *.js set expandtab tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.json set expandtab tabstop=2 shiftwidth=2
 
 "" Searching
 set hlsearch                    " highlight matches

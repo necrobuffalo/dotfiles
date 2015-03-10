@@ -1,12 +1,12 @@
 !URxvt.transparent: true
 !URxvt.shading: 40
 
-URxvt.font: xft:Source Code Pro:size=9
+URxvt.font: xft:Source Code Pro:size=8
 URxvt.letterSpace: -2
 ! URxvt.reverseVideo: on
 
 URxvt.urgentOnBell: true
-URxvt.visualBell: true
+! URxvt.visualBell: true
 
 URxvt.scrollBar: false
 
