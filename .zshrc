@@ -30,6 +30,7 @@ PATH=~/bin:$PATH
 # No idea what this does
 fpath=(~/.zsh $fpath)
 
+# Source all related files
 for r in $HOME/.zsh/*.zsh; do
     if [[ $DEBUG > 0 ]]; then
        echo "zsh: sourcing $r"

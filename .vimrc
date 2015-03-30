@@ -32,6 +32,11 @@ autocmd BufRead,BufNewFile *.pp set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.js set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.json set expandtab tabstop=2 shiftwidth=2
 
+" Use two spaces for anything yaml-related as well - ansible, salt, et al
+autocmd BufRead,BufNewFile *.sls set expandtab tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.yaml set expandtab tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.play set expandtab tabstop=2 shiftwidth=2
+
 "" Searching
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
