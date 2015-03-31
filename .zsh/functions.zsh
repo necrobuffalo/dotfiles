@@ -18,8 +18,7 @@ findme() {
 # MCECS-related functions
 ############################################################
 cecsvpn() {
-    cd /home/taron/Downloads
-    sudo openvpn --ca openvpn.cecs.pdx.edu.ca.cert.crt --config cecsvpn.ovpn --ping 60 --ping-restart 360 --persist-remote-ip --daemon
+    sudo openvpn --config /home/taron/Downloads/cecsvpn.ovpn --ping 60 --ping-restart 360 --persist-remote-ip --daemon
 }
 
 kickvpn() {
