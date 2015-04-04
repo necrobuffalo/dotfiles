@@ -5,7 +5,7 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/taron/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -39,7 +39,8 @@ fi
 # CAT-specific options
 if [[ -d /cat ]]; then
     export PATH=/cat/bin:${PATH}
-    export MANPATH=/cat/man:$(man -w)
+    [[ `uname` == "Linux" ]] && export MANPATH=/cat/man:$(man -w)
+    [[ `uname` == "SunOS" ]] && export MANPATH=/cat/man:/usr/share/man
 fi
 
 # Use binaries in homedir regardless of environment
