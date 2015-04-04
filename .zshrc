@@ -11,6 +11,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+############################################################
+# GENERAL OPTIONS
+############################################################
 
 # Set up virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
@@ -27,9 +30,24 @@ EDITOR=vim
 
 PATH=~/bin:$PATH
 
-# No idea what this does
-fpath=(~/.zsh $fpath)
+############################################################
+# SOLARIS COMPATIBILITY
+############################################################
+if `uname | grep -i SunOS > /dev/null`; then
+    if $(echo ${TERM} | grep screen > /dev/null); then
+        export TERM=screen
+    elif $(echo ${TERM} | grep rxvt-unicode > /dev/null); then
+        export TERM=rxvt-256color
+    fi
 
+    export PATH=/opt/csw/bin:${PATH}
+fi
+
+############################################################
+# ADDITIONAL FILES
+############################################################
+
+fpath=(~/.zsh $fpath)
 # Source all related files
 for r in $HOME/.zsh/*.zsh; do
     if [[ $DEBUG > 0 ]]; then
