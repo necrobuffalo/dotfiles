@@ -14,6 +14,10 @@ compinit
 ############################################################
 # COLOURS
 ############################################################
+# Set TERM first if on solaris
+[[ `uname` == "SunOS" ]] && [[ $TERM == "screen-256color" ]] && export TERM=screen
+[[ `uname` == "SunOS" ]] && [[ $TERM == "rxvt-unicode-256color" ]] && export TERM=rxvt-256color
+
 setopt prompt_subst
 autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
@@ -27,7 +31,7 @@ done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
 ############################################################
-# GENERAL OPTIONS
+# VARIABLES
 ############################################################
 # Prompt
 PROMPT="┌ %(?..%?)%B%F${PR_GREEN}%n${PR_NO_COLOUR}%f%b@%m:%~
@@ -37,6 +41,8 @@ RPROMPT="%(?..:()"
 # Set preferred programs for paging and editing
 EDITOR=vim
 PAGER=less
+
+[[ `uname` == "SunOS" ]] && export PATH=/opt/csw/bin:${PATH} && export PAGER=$(which less)
 
 ############################################################
 # ENVIRONMENT-SPECIFIC OPTIONS
@@ -58,27 +64,12 @@ if [[ -d /cat ]]; then
     [[ `uname` == "SunOS" ]] && export MANPATH=/cat/man:/usr/share/man
 fi
 
-# Use binaries in homedir regardless of environment
+# Prioritize binaries in homedir regardless of environment
 PATH=~/bin:${PATH}
-
-############################################################
-# SOLARIS COMPATIBILITY
-############################################################
-if `uname | grep -i SunOS > /dev/null`; then
-    if $(echo ${TERM} | grep screen > /dev/null); then
-        export TERM=screen
-    elif $(echo ${TERM} | grep rxvt-unicode > /dev/null); then
-        export TERM=rxvt-256color
-    fi
-
-    export PATH=/opt/csw/bin:${PATH}
-    export PAGER=$(which less)
-fi
 
 ############################################################
 # ADDITIONAL FILES
 ############################################################
-
 fpath=(~/.zsh $fpath)
 # Source all related files
 for r in $HOME/.zsh/*.zsh; do
