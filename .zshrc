@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -11,9 +13,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-############################################################
+###############################################################################
 # COLOURS
-############################################################
+###############################################################################
 # Set TERM first if on solaris
 [[ `uname` == "SunOS" ]] && [[ $TERM == "screen-256color" ]] && export TERM=screen
 [[ `uname` == "SunOS" ]] && [[ $TERM == "rxvt-unicode-256color" ]] && export TERM=rxvt-256color
@@ -30,9 +32,9 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
-############################################################
+###############################################################################
 # VARIABLES
-############################################################
+###############################################################################
 # Prompt
 PROMPT="┌ %(?..%?)%B%F${PR_GREEN}%n${PR_NO_COLOUR}%f%b@%m:%~
 └─ %# "
@@ -44,9 +46,9 @@ PAGER=less
 
 [[ `uname` == "SunOS" ]] && export PATH=/opt/csw/bin:${PATH} && export PAGER=$(which less)
 
-############################################################
+###############################################################################
 # ENVIRONMENT-SPECIFIC OPTIONS
-############################################################
+###############################################################################
 # Set up virtualenvwrapper if available
 if [[ -e /usr/bin/virtualenvwrapper.sh ]] ; then
     export WORKON_HOME=~/.virtualenvs
@@ -67,9 +69,9 @@ fi
 # Prioritize binaries in homedir regardless of environment
 PATH=~/bin:${PATH}
 
-############################################################
+###############################################################################
 # ADDITIONAL FILES
-############################################################
+###############################################################################
 fpath=(~/.zsh $fpath)
 # Source all related files
 for r in $HOME/.zsh/*.zsh; do
