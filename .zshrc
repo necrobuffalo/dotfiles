@@ -12,10 +12,25 @@ compinit
 # End of lines added by compinstall
 
 ############################################################
+# COLOURS
+############################################################
+setopt prompt_subst
+autoload colors zsh/terminfo
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+    colors
+fi
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+    (( count = $count + 1 ))
+done
+PR_NO_COLOUR="%{$terminfo[sgr0]%}"
+
+############################################################
 # GENERAL OPTIONS
 ############################################################
 # Prompt
-PROMPT="┌ %(?..%?)%B%F{green}%n%f%b@%m:%~
+PROMPT="┌ %(?..%?)%B%F${PR_GREEN}%n${PR_NO_COLOUR}%f%b@%m:%~
 └─ %# "
 RPROMPT="%(?..:()"
 
@@ -57,6 +72,7 @@ if `uname | grep -i SunOS > /dev/null`; then
     fi
 
     export PATH=/opt/csw/bin:${PATH}
+    export PAGER=$(which less)
 fi
 
 ############################################################
