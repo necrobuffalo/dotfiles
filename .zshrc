@@ -14,21 +14,36 @@ compinit
 ############################################################
 # GENERAL OPTIONS
 ############################################################
-
-# Set up virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
-# Set up git highlighting, etc.
-source /usr/share/git/completion/git-prompt.sh
-
 # Prompt
 PROMPT="┌ %(?..%?)%B%F{green}%n%f%b@%m:%~
 └─ %# "
 RPROMPT="%(?..:()"
 
+# Set preferred programs for paging and editing
 EDITOR=vim
+PAGER=less
 
-PATH=~/bin:$PATH
+############################################################
+# ENVIRONMENT-SPECIFIC OPTIONS
+############################################################
+# Set up virtualenvwrapper if available
+if [[ -e /usr/bin/virtualenvwrapper.sh ]] ; then
+    export WORKON_HOME=~/.virtualenvs
+    source /usr/bin/virtualenvwrapper.sh
+fi
+# Set up git highlighting, etc.
+if [[ -e /usr/share/git/completion/git-prompt.sh ]] ; then
+    source /usr/share/git/completion/git-prompt.sh
+fi
+
+# CAT-specific options
+if [[ -d /cat ]]; then
+    export PATH=/cat/bin:${PATH}
+    export MANPATH=/cat/man:$(man -w)
+fi
+
+# Use binaries in homedir regardless of environment
+PATH=~/bin:${PATH}
 
 ############################################################
 # SOLARIS COMPATIBILITY
