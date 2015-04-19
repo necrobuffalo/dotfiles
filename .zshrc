@@ -13,6 +13,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+setopt prompt_subst
+setopt appendhistory
+
 ###############################################################################
 # COLOURS
 ###############################################################################
@@ -20,7 +23,6 @@ compinit
 [[ `uname` == "SunOS" ]] && [[ $TERM == "screen-256color" ]] && export TERM=screen
 [[ `uname` == "SunOS" ]] && [[ $TERM == "rxvt-unicode-256color" ]] && export TERM=rxvt-256color
 
-setopt prompt_subst
 autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
     colors
@@ -41,8 +43,8 @@ PROMPT="┌ %(?..%?)%B%F${PR_GREEN}%n${PR_NO_COLOUR}%f%b@%m:%~
 RPROMPT="%(?..:()"
 
 # Set preferred programs for paging and editing
-EDITOR=vim
-PAGER=less
+export EDITOR=vim
+export PAGER=less
 
 [[ `uname` == "SunOS" ]] && export PATH=/opt/csw/bin:${PATH} && export PAGER=$(which less)
 
