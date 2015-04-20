@@ -1,19 +1,30 @@
 import XMonad
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.ManageDocks
 import XMonad.Layout.ResizableTile
 
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
     tiled = ResizableTall 1 (3/100) (1/2) []
 
+myUrgencyHook = SpawnUrgencyHook "notify-send \'Bell in session.\'"
+
+myManageHook = composeAll
+    [ manageDocks <+> manageHook defaultConfig
+    , className =? "Firefox" --> doShift "2"
+    ]
+
 main = do
-    xmonad $ defaultConfig
+    xmonad $ withUrgencyHook myUrgencyHook
+        $ defaultConfig
         { modMask               = mod4Mask
         , terminal              = "urxvt"
         , normalBorderColor     = "dim grey"
         , focusedBorderColor    = "dodger blue" -- originally #27a343
         , layoutHook            = myLayout
+        , manageHook            = myManageHook
         } `additionalKeys`
         [ ((mod4Mask, xK_z), sendMessage MirrorShrink)
         , ((mod4Mask, xK_a), sendMessage MirrorExpand)

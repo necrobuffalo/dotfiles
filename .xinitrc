@@ -13,7 +13,9 @@ fi
 
 xrdb ~/.Xresources
 setxkbmap -option ctrl:nocaps
+synclient PalmDetect=1
 
+xmobar &
 gnome-screensaver &
 ~/.fehbg
 

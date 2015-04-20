@@ -1,0 +1,9 @@
+Config { font = "xft:Source Code Pro:size=9"
+        , borderColor = "black"
+        , commands = [ Run Com "acpi" [] "" 10
+                     , Run Battery [] 50
+                     , Run Weather "KPDX" ["-t", "PDX: <tempF>F"] 36000
+                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                     ]
+        , template = "%battery% } %KPDX% { %date%"
+        }
