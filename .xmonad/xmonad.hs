@@ -13,7 +13,7 @@ myUrgencyHook = SpawnUrgencyHook "notify-send \'Bell in session.\'"
 
 myManageHook = composeAll
     [ manageDocks <+> manageHook defaultConfig
-    , className =? "Firefox" --> doShift "2"
+    , className =? "Chrome" --> doShift "2"
     ]
 
 main = do
@@ -31,6 +31,6 @@ main = do
         , ((mod4Mask .|. shiftMask, xK_z), spawn "gnome-screensaver-command -l")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
-        , ((mod4Mask .|. shiftMask, xK_b), spawn "firefox-developer")
+        , ((mod4Mask .|. shiftMask, xK_b), spawn "google-chrome-stable")
         , ((mod4Mask, xK_p), spawn "dmenu_run -fn 'Source Sans Pro' -nb black -nf grey -sb grey -sf black")
         ]

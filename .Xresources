@@ -9,7 +9,7 @@ URxvt.urgentOnBell: true
 URxvt.scrollBar: false
 
 URxvt.perl-ext-common: default,font-size,matcher
-URxvt.url-launcher: /usr/bin/firefox-developer
+URxvt.url-launcher: /usr/bin/google-chrome-stable
 URxvt.matcher.button: 1
 
 ! Keysyms

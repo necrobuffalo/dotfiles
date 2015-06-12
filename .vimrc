@@ -12,6 +12,7 @@ set showcmd                     " display incomplete commands
 filetype plugin indent on       " load file type plugins + indentation
 set number                      " keep number lines on the right side
                                 " bonus: ask basil about her vim line numbers
+set colorcolumn=80
 
 "" Whitespace
 set nowrap                      " don't wrap lines

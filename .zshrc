@@ -38,8 +38,8 @@ PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 # VARIABLES
 ###############################################################################
 # Prompt
-PROMPT="┌ %(?..%?)%B%F${PR_GREEN}%n${PR_NO_COLOUR}%f%b@%m:%~
-└─ %# "
+PROMPT="%(?..%?)%B%F${PR_RED}%n${PR_NO_COLOUR}%f%b@%m:%~
+%# "
 RPROMPT="%(?..:()"
 
 # Set preferred programs for paging and editing
