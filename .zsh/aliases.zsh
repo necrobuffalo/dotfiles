@@ -1,5 +1,4 @@
-alias catnet='ssh reaver'
-alias vps='ssh lorgar'
+alias catproxy='ssh -D localhost:1080 destiny'
 
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'

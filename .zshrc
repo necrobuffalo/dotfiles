@@ -46,7 +46,13 @@ RPROMPT="%(?..:()"
 export EDITOR=vim
 export PAGER=less
 
+export XKBOPTIONS="ctrl:nocaps"
+
 [[ `uname` == "SunOS" ]] && export PATH=/opt/csw/bin:${PATH} && export PAGER=$(which less)
+
+# Extra go bits
+export GOPATH=~/go
+export PATH=${PATH}:~/go/bin
 
 ###############################################################################
 # ENVIRONMENT-SPECIFIC OPTIONS
@@ -57,9 +63,7 @@ if [[ -e /usr/bin/virtualenvwrapper.sh ]] ; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 # Set up git highlighting, etc.
-if [[ -e /usr/share/git/completion/git-prompt.sh ]] ; then
-    source /usr/share/git/completion/git-prompt.sh
-fi
+source ~/.git-prompt.sh
 
 # CAT-specific options
 if [[ -d /cat ]]; then
@@ -75,6 +79,11 @@ PATH=~/bin:${PATH}
 # ADDITIONAL FILES
 ###############################################################################
 fpath=(~/.zsh $fpath)
+
+if [[ -f ~/.openrc ]] ; then
+    source .openrc
+fi
+
 # Source all related files
 for r in $HOME/.zsh/*.zsh; do
     if [[ $DEBUG > 0 ]]; then
@@ -82,3 +91,8 @@ for r in $HOME/.zsh/*.zsh; do
     fi
     source $r
 done
+
+###############################################################################
+# "MOTD"
+###############################################################################
+

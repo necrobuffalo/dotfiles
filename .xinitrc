@@ -15,9 +15,9 @@ xrdb ~/.Xresources
 setxkbmap -option ctrl:nocaps
 synclient PalmDetect=1
 
-xmobar &
+#xmobar &
 gnome-screensaver &
 ~/.fehbg
 
-exec xmonad
-#exec gnome-shell
+#exec openbox-session
+exec ratpoison
