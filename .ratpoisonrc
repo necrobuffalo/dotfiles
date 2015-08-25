@@ -1,0 +1,7 @@
+bind c exec urxvt
+bind C-c exec urxvt
+
+bind f exec firefox
+
+set fgcolor grey
+set bgcolor black
