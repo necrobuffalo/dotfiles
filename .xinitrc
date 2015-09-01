@@ -15,6 +15,9 @@ xrdb ~/.Xresources
 setxkbmap -option ctrl:nocaps
 synclient PalmDetect=1
 
+pulseaudio --start
+xbindkeys
+
 #xmobar &
 gnome-screensaver &
 ~/.fehbg

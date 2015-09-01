@@ -3,5 +3,8 @@ bind C-c exec urxvt
 
 bind f exec firefox
 
+bind l exec gnome-screensaver-command -l
+
 set fgcolor grey
 set bgcolor black
+set border 0
