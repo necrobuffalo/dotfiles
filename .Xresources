@@ -1,8 +1,8 @@
 URxvt.transparent: true
 URxvt.shading: 10
 
-URxvt.font: xft:Source Code Pro:size=9
-URxvt.letterSpace: -2
+URxvt.font: xft:Droid Sans Mono:size=10
+URxvt.letterSpace: -1 
 
 URxvt.urgentOnBell: true
 
