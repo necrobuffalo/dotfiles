@@ -1,98 +1,79 @@
 #!/usr/bin/zsh
 
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-bindkey -e
-# End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '~/.zshrc'
+
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle :compinstall filename '/home/taron/.zshrc'
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-setopt prompt_subst
-setopt appendhistory
+###############
+# Zsh modules #
+###############
+# This seems to be loaded by default in Arch and is a candidate for removal.
+autoload -Uz colors && colors
 
-###############################################################################
-# COLOURS
-###############################################################################
-# Set TERM first if on solaris
-[[ `uname` == "SunOS" ]] && [[ $TERM == "screen-256color" ]] && export TERM=screen
-[[ `uname` == "SunOS" ]] && [[ $TERM == "rxvt-unicode-256color" ]] && export TERM=rxvt-256color
+#######################
+# Shell configuration #
+#######################
+setopt append_history
+HISTSIZE=1000
+SAVEHIST=1000
 
-autoload colors zsh/terminfo
-if [[ "$terminfo[colors]" -ge 8 ]]; then
-    colors
-fi
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-    (( count = $count + 1 ))
-done
-PR_NO_COLOUR="%{$terminfo[sgr0]%}"
+PROMPT="%10F%m%f %(?..%1F%?%f )%# "
+RPROMPT="[%6F%~%f]"
 
-###############################################################################
-# VARIABLES
-###############################################################################
-# Prompt
-PROMPT="%(?..%?)%B%F${PR_RED}%n${PR_NO_COLOUR}%f%b@%m:%~
-%# "
-RPROMPT="%(?..:()"
-
-# Set preferred programs for paging and editing
+#########################
+# Environment variables #
+#########################
 export EDITOR=vim
 export PAGER=less
 
-export XKBOPTIONS="ctrl:nocaps"
+###########
+# Aliases #
+###########
+# Colors
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
 
-[[ `uname` == "SunOS" ]] && export PATH=/opt/csw/bin:${PATH} && export PAGER=$(which less)
+# Short forms
+alias j='journalctl'
+alias p='pacman'
+alias s='systemctl'
+alias wcr='sudo wpa_cli reassociate'
+alias y='yaourt'
 
-# Extra go bits
-export GOPATH=~/go
-export PATH=${PATH}:~/go/bin
+# Quality of life improvements
+alias which='whence -a'
+alias mute='pactl set-sink-mute 1 toggle'
+alias vu='pactl set-sink-volume 1 +10%'
+alias vd='pactl set-sink-volume 1 -10%'
 
-###############################################################################
-# ENVIRONMENT-SPECIFIC OPTIONS
-###############################################################################
-# Set up virtualenvwrapper if available
-if [[ -e /usr/bin/virtualenvwrapper.sh ]] ; then
-    export WORKON_HOME=~/.virtualenvs
-    source /usr/bin/virtualenvwrapper.sh
-fi
-# Set up git highlighting, etc.
-source ~/.git-prompt.sh
-
-# CAT-specific options
-if [[ -d /cat ]]; then
-    export PATH=/cat/bin:${PATH}
-    [[ `uname` == "Linux" ]] && export MANPATH=/cat/man:$(man -w)
-    [[ `uname` == "SunOS" ]] && export MANPATH=/cat/man:/usr/share/man
-fi
-
-# Prioritize binaries in homedir regardless of environment
-PATH=~/bin:${PATH}
-
-###############################################################################
-# ADDITIONAL FILES
-###############################################################################
-fpath=(~/.zsh $fpath)
-
-if [[ -f ~/.openrc ]] ; then
-    source .openrc
-fi
-
-# Source all related files
-for r in $HOME/.zsh/*.zsh; do
-    if [[ $DEBUG > 0 ]]; then
-       echo "zsh: sourcing $r"
-    fi
-    source $r
-done
-
-###############################################################################
-# "MOTD"
-###############################################################################
-
+#############
+# Functions #
+#############
+__weather_general() {
+    WEATHER=$(curl -s "http://api.openweathermap.org/data/2.5/weather?id=${1}&units=imperial")
+    WEATHER=$(echo ${WEATHER} | grep -oP '"temp":[\.\d]*' | sed 's/"temp"://')
+    echo It is currently ${WEATHER}F in ${2}.
+}
+__pdx_weather() {
+    __weather_general 5746545 Portland
+}
+__corvallis_weather() {
+    __weather_general 5720727 Corvallis
+}
+weather() {
+    case "${1}" in
+        pdx|portland)
+            __pdx_weather
+            ;;
+        home)
+            __corvallis_weather
+            ;;
+        *)
+            __pdx_weather
+    esac
+}

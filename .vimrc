@@ -1,46 +1,48 @@
-" the vimrc is where we configure our editor
-" this guy has some great thoughts on the matter:
-" http://mislav.uniqpath.com/2011/12/vim-revisited/
-" look into colorschemes, pluggins, package managers for your plugins
+" Neobundle
+set nocompatible
+let &runtimepath.=',' . $HOME . '/.vim/bundle/neobundle.vim/'
+call neobundle#begin(expand('~/.vim/bundle'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neocomplete.vim'
 
-"" Basics
-colorscheme delek               " use an appealing and bright color set
-syntax on                       " colorize code based on syntax highlihgting
-set nocompatible                " choose no compatibility with legacy vi
-set encoding=utf-8              " utf8 is an encoding, set it
-set showcmd                     " display incomplete commands
-filetype plugin indent on       " load file type plugins + indentation
-set number                      " keep number lines on the right side
-                                " bonus: ask basil about her vim line numbers
-set colorcolumn=80
+call neobundle#end()
+filetype plugin indent on               " use filetype plugins and indentation
 
-"" Whitespace
-set nowrap                      " don't wrap lines
-set backspace=indent,eol,start  " backspace through everything in insert mode
+NeoBundleCheck
 
-" the next set is for tabs vs spaces
-" tabs vs spaces is one of the computing holy wars
-" also under contention is the number of spaces in a tab
+" Neocomplete
+let g:neocomplete#enable_at_startup = 1
 
-"python/bash mode
-set expandtab                   "don't uses spaces ever, a tab key is a jump of spaces
-set tabstop=4                   "tabs are 4 spaces (:help tabstop)
-set shiftwidth=4                "tabs are 4 spaces (:help shiftwidth)
+" General
+set nocompatible                        " fuck vi
+set encoding=utf-8                      " does what it says on the tin
+set showcmd                             " show incomplete commands
+set number                              " show line numbers
 
+" Highlighting
+colorscheme delek
+syntax on                               " do syntax highlighting
 
-"ruby/puppet mode
+" Whitespace
+set nowrap
+set backspace=indent,eol,start
+set expandtab                           " use spaces instead of tabs
+set tabstop=4                           " see tab characters as 4 spaces
+set shiftwidth=4                        " pressing tab inserts 4 spaces
+
+" Searching
+set hlsearch                            " highlight matches when searching
+set ignorecase                          " ignore case in searches
+set smartcase                           " unless the search contains a capital
+
+" Heathen languages that use 2 spaces
+" Puppet
 autocmd BufRead,BufNewFile *.pp set expandtab tabstop=2 shiftwidth=2
+" js/json
 autocmd BufRead,BufNewFile *.js set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.json set expandtab tabstop=2 shiftwidth=2
-
-" Use two spaces for anything yaml-related as well - ansible, salt, et al
+" yaml (also salt, ansible)
 autocmd BufRead,BufNewFile *.sls set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.yaml set expandtab tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.yml set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.play set expandtab tabstop=2 shiftwidth=2
-
-"" Searching
-set hlsearch                    " highlight matches
-set incsearch                   " incremental searching
-set ignorecase                  " searches are case insensitive...
-set smartcase                   " ... unless they contain at least one capital letter
-
