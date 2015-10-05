@@ -77,3 +77,8 @@ weather() {
             __pdx_weather
     esac
 }
+
+#######################
+# Do openstack things #
+#######################
+[[ -f ~/.openrc ]] && source ~/.openrc
