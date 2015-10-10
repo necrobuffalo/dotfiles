@@ -30,6 +30,7 @@ RPROMPT="[%6F%~%f]"
 #########################
 export EDITOR=vim
 export PAGER=less
+export PATH=~/bin:${PATH}
 
 ###########
 # Aliases #

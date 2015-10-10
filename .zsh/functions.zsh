@@ -7,6 +7,13 @@ colours() {
      for i in {0..255} ; do
          printf "\x1b[38;5;${i}m${i} "
      done
+     echo
+     echo Again in bold:
+     tput bold
+     for i in {0..255} ; do
+         printf "\x1b[38;5;${i}m${i} "
+     done
+     tput sgr0
 }
 
 findme() {
