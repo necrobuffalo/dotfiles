@@ -45,6 +45,8 @@ alias p='pacman'
 alias s='systemctl'
 alias wcr='sudo wpa_cli reassociate'
 alias y='yaourt'
+alias z='zypper'
+alias zs='zypper search'
 
 # Quality of life improvements
 alias which='whence -a'
