@@ -35,6 +35,14 @@ set hlsearch                            " highlight matches when searching
 set ignorecase                          " ignore case in searches
 set smartcase                           " unless the search contains a capital
 
+" Splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+set splitbelow
+set splitright
+
 " Heathen languages that use 2 spaces
 " Puppet
 autocmd BufRead,BufNewFile *.pp set expandtab tabstop=2 shiftwidth=2
