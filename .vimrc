@@ -45,6 +45,7 @@ set splitright
 
 " Heathen languages that use 2 spaces
 " Puppet
+autocmd BufRead,BufNewFile *.rb set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.pp set expandtab tabstop=2 shiftwidth=2
 " js/json
 autocmd BufRead,BufNewFile *.js set expandtab tabstop=2 shiftwidth=2
@@ -53,4 +54,7 @@ autocmd BufRead,BufNewFile *.json set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.sls set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.yaml set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.yml set expandtab tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.raml set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.play set expandtab tabstop=2 shiftwidth=2
+" html
+autocmd BufRead,BufNewFile *.html set expandtab tabstop=2 shiftwidth=2
