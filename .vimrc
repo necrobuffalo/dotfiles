@@ -4,6 +4,7 @@ let &runtimepath.=',' . $HOME . '/.vim/bundle/neobundle.vim/'
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'scrooloose/nerdtree'
 
 call neobundle#end()
 filetype plugin indent on               " use filetype plugins and indentation
@@ -12,6 +13,8 @@ NeoBundleCheck
 
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
+" Nerdtree
+map <C-n> :NERDTreeToggle<CR>
 
 " General
 set nocompatible                        " fuck vi

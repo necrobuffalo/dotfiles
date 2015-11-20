@@ -3,8 +3,8 @@
 #######################
 # Shell configuration #
 #######################
-PS1="$(tput setaf 10)\w$(tput sgr0)
-$ "
+PS1="$(tput setaf 10)\u $(tput setaf 6)on \h $(tput setaf 11)at \w$(tput sgr0)
+\$ "
 
 #########################
 # Environment variables #
@@ -38,6 +38,8 @@ alias zs='zypper search'
 alias zup='sudo zypper dup' # can't stop on this release, this is bat country!
 
 # Quality of life improvements
+alias uskb='setxkbmap -layout us -option ctrl:nocaps'
+alias intlkb='setxkbmap -layout us -variant intl -option ctrl:nocaps'
 alias mute='pactl set-sink-mute 1 toggle'
 alias vu='pactl set-sink-volume 1 +10%'
 alias vd='pactl set-sink-volume 1 -10%'
