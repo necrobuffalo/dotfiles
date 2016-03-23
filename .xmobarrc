@@ -1,9 +1,25 @@
-Config { font = "xft:Source Code Pro:size=9"
-        , borderColor = "black"
-        , commands = [ Run Com "acpi" [] "" 10
-                     , Run Battery [] 50
-                     , Run Weather "KPDX" ["-t", "PDX: <tempF>F"] 36000
-                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                     ]
-        , template = "%battery% } %KPDX% { %date%"
-        }
+Config { font = "xft:Terminus:size=8"
+       , bgColor = "#000000"
+       , fgColor = "#BFBFBF"
+       , position = Top
+       , border = NoBorder
+       , borderColor = "#BFBFBF"
+       , borderWidth = 1
+       , hideOnStart = False
+       , lowerOnStart = True
+       , persistent = False
+       , allDesktops = True
+       , overrideRedirect = True
+       , pickBroadest = False
+       , iconRoot = "."
+       , commands = [ Run Weather "KPDX" ["-t", "PDX: <tempF>F"] 18000
+                    , Run Date "%a %b %_d %Y * %H:%M:%S" "theDate" 10
+                    , Run Wireless "wlan0" ["-t", "<essid> <qualitybar>"] 20
+                    , Run Mpris2 "mopidy" ["-t", "♫ <artist> - <title>"] 10
+                    , Run StdinReader]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader%}\
+                    \<fc=red>%mpris2%</fc>\
+                    \{ <fc=yellow>%wlan0wi%</fc> * <fc=#00FF00>%KPDX%</fc> * <fc=#FF0000>%theDate%</fc>"
+       }

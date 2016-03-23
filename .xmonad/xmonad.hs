@@ -22,25 +22,24 @@ myManageHook = composeAll
     , className =? "Firefox" --> doShift "2"
     ]
 
-main = xmonad =<< dzen (withUrgencyHook myUrgencyHook (myConfig))
+main = xmonad =<< xmobar (withUrgencyHook myUrgencyHook (myConfig))
 
 myConfig = defaultConfig
         { modMask               = mod4Mask
         , terminal              = "urxvt"
         , normalBorderColor     = "dim grey"
-        , focusedBorderColor    = "dodger blue" -- originally #27a343
+        , focusedBorderColor    = "red"
         , layoutHook            = myLayout
         , manageHook            = myManageHook
-        , startupHook           = execScriptHook "startup"
         } `additionalKeys`
         [ ((mod4Mask, xK_z), sendMessage MirrorShrink)
         , ((mod4Mask, xK_a), sendMessage MirrorExpand)
-        , ((mod4Mask .|. shiftMask, xK_z), spawn "dm-tool lock")
+        , ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
         , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume 1 -5%")
         , ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume 1 +5%")
         , ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute 1 toggle")
         , ((mod4Mask .|. shiftMask, xK_b), spawn "firefox")
-        , ((mod4Mask, xK_p), spawn "dmenu_run -fn 'Droid Sans' -nb black -nf grey -sb grey -sf black")
+        , ((mod4Mask, xK_p), spawn "dmenu_run -fn 'Terminus-8' -nb black -nf red -sb red -sf black")
         ]

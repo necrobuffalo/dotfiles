@@ -11,7 +11,8 @@ PS1="$(tput setaf 10)\u $(tput setaf 6)on \h $(tput setaf 11)at \w$(tput sgr0)
 #########################
 export EDITOR=vim
 export PAGER=less
-export PATH=~/bin:${PATH}
+export PATH=/cat/bin:~/go/bin:~/bin:${PATH}
+export GOPATH=~/go
 
 ###########
 # Aliases #
@@ -22,6 +23,7 @@ alias fucking='sudo'
 alias reboot='/sbin/reboot'         # I don't actually want /sbin in my path
 alias shutdown='/sbin/shutdown now' # but less typing is still nice
 alias sl='ls --color=auto'
+alias emacs='emacs -nw'             # if I'm starting emacs from bash, I wanna use the terminal version
 
 # Colors
 alias grep='grep --color=auto'
@@ -41,8 +43,8 @@ alias zup='sudo zypper dup' # can't stop on this release, this is bat country!
 alias uskb='setxkbmap -layout us -option ctrl:nocaps'
 alias intlkb='setxkbmap -layout us -variant intl -option ctrl:nocaps'
 alias mute='pactl set-sink-mute 1 toggle'
-alias vu='pactl set-sink-volume 1 +10%'
-alias vd='pactl set-sink-volume 1 -10%'
+alias vu='pactl set-sink-volume 1 +5%'
+alias vd='pactl set-sink-volume 1 -5%'
 
 alias sockscat='ssh -D 1080 destiny'
 

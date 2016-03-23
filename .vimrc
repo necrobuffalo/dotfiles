@@ -5,6 +5,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'elixir-lang/vim-elixir'
 
 call neobundle#end()
 filetype plugin indent on               " use filetype plugins and indentation
@@ -23,7 +24,7 @@ set showcmd                             " show incomplete commands
 set number                              " show line numbers
 
 " Highlighting
-colorscheme delek
+colorscheme pablo
 syntax on                               " do syntax highlighting
 
 " Whitespace
@@ -61,3 +62,5 @@ autocmd BufRead,BufNewFile *.raml set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.play set expandtab tabstop=2 shiftwidth=2
 " html
 autocmd BufRead,BufNewFile *.html set expandtab tabstop=2 shiftwidth=2
+" Makefiles
+autocmd BufRead,BufNewFile Makefile set noexpandtab

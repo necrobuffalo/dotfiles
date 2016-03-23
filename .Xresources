@@ -1,8 +1,9 @@
-URxvt.transparent: true
-URxvt.shading: 5
+!URxvt.transparent: true
+!URxvt.shading: 5
 
-URxvt.font: xft:Droid Sans Mono:size=10
-xterm*faceName: Droid Sans Mono:size=10:antialias=true
+URxvt.font: xft:Terminus:size=8
+! URxvt.font: xft:Hack:size=10
+! xterm*faceName: Droid Sans Mono:size=10:antialias=true
 ! URxvt.letterSpace: -1 
 
 URxvt.urgentOnBell: true
