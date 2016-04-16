@@ -14,12 +14,11 @@ Config { font = "xft:Terminus:size=8"
        , iconRoot = "."
        , commands = [ Run Weather "KPDX" ["-t", "PDX: <tempF>F"] 18000
                     , Run Date "%a %b %_d %Y * %H:%M:%S" "theDate" 10
-                    , Run Wireless "wlan0" ["-t", "<essid> <qualitybar>"] 20
                     , Run Mpris2 "mopidy" ["-t", "♫ <artist> - <title>"] 10
                     , Run StdinReader]
        , sepChar = "%"
        , alignSep = "}{"
        , template = "%StdinReader%}\
                     \<fc=red>%mpris2%</fc>\
-                    \{ <fc=yellow>%wlan0wi%</fc> * <fc=#00FF00>%KPDX%</fc> * <fc=#FF0000>%theDate%</fc>"
+                    \{ <fc=red>%KPDX%</fc> * <fc=#FF0000>%theDate%</fc>"
        }
