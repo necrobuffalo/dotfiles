@@ -23,8 +23,8 @@ set encoding=utf-8                      " does what it says on the tin
 set showcmd                             " show incomplete commands
 set number                              " show line numbers
 
-" Highlighting
-colorscheme pablo
+" Colors
+colorscheme koehler
 syntax on                               " do syntax highlighting
 
 " Whitespace
@@ -64,3 +64,6 @@ autocmd BufRead,BufNewFile *.play set expandtab tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.html set expandtab tabstop=2 shiftwidth=2
 " Makefiles
 autocmd BufRead,BufNewFile Makefile set noexpandtab
+
+" Theme overrides
+highlight Normal ctermbg=none

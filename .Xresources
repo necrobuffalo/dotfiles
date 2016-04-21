@@ -1,5 +1,5 @@
 !URxvt.transparent: true
-!URxvt.shading: 5
+!URxvt.shading: 50
 URxvt.font: xft:Terminus:size=8
 ! URxvt.font: xft:Hack:size=10
 ! xterm*faceName: Droid Sans Mono:size=10:antialias=true
@@ -19,53 +19,33 @@ URxvt.keysym.C-Down:    perl:font-size:decrease
 URxvt.keysym.C-S-Up:    perl:font-size:incglobal
 URxvt.keysym.C-S-Down:  perl:font-size:decglobal
 
-! Base16 Bright
-! Scheme: Chris Kempson (http://chriskempson.com)
+! scheme originally by shinryuu - lolitastic
+*foreground:    #ebebeb
+! original:
+! *background:    #101012
+*background:    #020203
 
-#define base00 #000000
-#define base01 #303030
-#define base02 #505050
-#define base03 #b0b0b0
-#define base04 #d0d0d0
-#define base05 #e0e0e0
-#define base06 #f5f5f5
-#define base07 #ffffff
-#define base08 #fb0120
-#define base09 #fc6d24
-#define base0A #fda331
-#define base0B #a1c659
-#define base0C #76c7b7
-#define base0D #6fb3d2
-#define base0E #d381c3
-#define base0F #be643c
-
-*.foreground:   base05
-*.background:   base00
-*.cursorColor:  base05
-
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
-
-*.color8:       base03
-*.color9:       base08
-*.color10:      base0B
-*.color11:      base0A
-*.color12:      base0D
-*.color13:      base0E
-*.color14:      base0C
-*.color15:      base07
-
-! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
-! use 'shell' template to set these if necessary
-*.color16:      base09
-*.color17:      base0F
-*.color18:      base01
-*.color19:      base02
-*.color20:      base04
-*.color21:      base06
+!black
+*color0:   #1F1F1F
+*color8:   #4d4d4d
+!redc
+*color1:   #A54242
+*color9:   #CC6666 
+!green
+*color2:   #B7CE42
+*color10:  #BDE077
+!yellow
+*color3:   #FEA63C
+*color11:  #FFE863
+!blue
+*color4:   #66AABB
+*color12:  #AACCBB
+!magenta
+*color5:   #B7416E
+*color13:  #BB4466
+!cyan
+*color6:   #5E7175
+*color14:  #A3BABF
+!white
+*color7:   #DDEEDD
+*color15:  #6C887A

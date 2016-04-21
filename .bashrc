@@ -3,7 +3,7 @@
 #######################
 # Shell configuration #
 #######################
-PS1="$(tput setaf 10)\u $(tput setaf 6)on \h $(tput setaf 11)at \w$(tput sgr0)
+PS1="\033[34m\u\033[36m@\033[31m\h\033[36m:\033[33m\w\033[0m
 \$ "
 
 #########################
@@ -21,7 +21,7 @@ export GOPATH=~/go
 alias derp='sudo /usr/sbin/wicked ifdown wlp2s0 && sudo /usr/sbin/wicked ifup wlp2s0'
 alias fucking='sudo'
 alias reboot='/sbin/reboot'         # I don't actually want /sbin in my path
-alias shutdown='/sbin/shutdown now' # but less typing is still nice
+alias shutdown='/sbin/shutdown' # but less typing is still nice
 alias sl='ls --color=auto'
 alias emacs='emacs -nw'             # if I'm starting emacs from bash, I wanna use the terminal version
 
