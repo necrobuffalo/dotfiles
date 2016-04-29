@@ -1,10 +1,10 @@
 #!/bin/sh
 ~/.fehbg
 setxkbmap -option ctrl:nocaps
+xrdb .Xresources
 
-xscreensaver -no-splash &
-# trayer --heighttype pixel --height 18 --SetPartialStrut true &
-# nm-applet &
+nm-applet &
 mopidy &
 
-spectrwm
+export _JAVA_AWT_WM_NONREPARENTING=1
+exec herbstluftwm

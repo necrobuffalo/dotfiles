@@ -1,24 +1,24 @@
-" Neobundle
+" dein
 set nocompatible
-let &runtimepath.=',' . $HOME . '/.vim/bundle/neobundle.vim/'
-call neobundle#begin(expand('~/.vim/bundle'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'elixir-lang/vim-elixir'
+set runtimepath^=~/.vim/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('~/.vim'))
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('elixir-lang/vim-elixir')
+call dein#add('flazz/vim-colorschemes')
 
-call neobundle#end()
+call dein#end()
+
+if dein#check_install()
+    call dein#install()
+endif
+
 filetype plugin indent on               " use filetype plugins and indentation
-
-NeoBundleCheck
 
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
-" Nerdtree
-map <C-n> :NERDTreeToggle<CR>
 
 " General
-set nocompatible                        " fuck vi
 set encoding=utf-8                      " does what it says on the tin
 set showcmd                             " show incomplete commands
 set number                              " show line numbers
