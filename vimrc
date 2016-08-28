@@ -13,6 +13,7 @@ call dein#add('honza/vim-snippets')
 call dein#add('bronson/vim-crosshairs')			" only show cursorcolumn/line on active buffer
 call dein#add('bling/vim-airline')				" fancy modeline
 call dein#add('edkolev/tmuxline.vim')
+call dein#add('mhinz/vim-signify')
 
 call dein#add('marciomazza/vim-brogrammer-theme')
 
@@ -100,3 +101,5 @@ let g:airline_powerline_fonts=1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" signify
+let g:signify_vcs_list = [ 'git', 'hg' ]
