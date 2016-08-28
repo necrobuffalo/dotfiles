@@ -1,0 +1,24 @@
+#!/bin/bash
+set -x
+
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# git
+ln -s ${BASE_DIR}/gitconfig ~/.gitconfig
+
+# vim
+ln -s ${BASE_DIR}/vimrc ~/.vimrc
+# and bootstrap dein
+if [[ ! -d ~/.dein ]]; then
+	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+	chmod u+x installer.sh
+	./installer.sh ~/.dein
+	rm installer.sh
+fi
+
+# shells
+ln -s ${BASE_DIR}/bashrc ~/.bashrc
+ln -s ${BASE_DIR}/zshrc ~/.zshrc
+
+# tmux
+ln -s ${BASE_DIR}/tmux.conf ~/.tmux.conf
