@@ -22,3 +22,4 @@ ln -s ${BASE_DIR}/zshrc ~/.zshrc
 
 # tmux
 ln -s ${BASE_DIR}/tmux.conf ~/.tmux.conf
+ln -s ${BASE_DIR}/tmuxline.conf ~/.tmuxline.conf
