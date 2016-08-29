@@ -20,8 +20,12 @@ export PATH=~/go/bin:~/bin:${PATH}
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 
+# wechall creds
 [[ -f ~/.wechallrc ]] && source ~/.wechallrc
+# openstack credentials
 [[ -f ~/.openrc ]] && source ~/.openrc
+# this needs to set manpath eventually, but it breaks in unexpected ways
+[[ -d /cat ]] && export PATH=/cat/bin:${PATH}
 
 # laptop
 if [[ $(uname) == 'Darwin' ]]; then
