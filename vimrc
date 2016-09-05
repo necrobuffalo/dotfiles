@@ -33,6 +33,7 @@ filetype plugin indent on
 
 set autoindent
 set backspace=indent,eol,start	" allow backspacing through beginning of lines
+set colorcolumn=80
 set cursorcolumn 				" highlight column the cursor is on
 set cursorline					" highlight line the cursor is on
 set hlsearch					" highlight search results
