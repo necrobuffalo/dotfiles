@@ -8,6 +8,7 @@ ln -s ${BASE_DIR}/gitconfig ~/.gitconfig
 
 # vim
 ln -s ${BASE_DIR}/vimrc ~/.vimrc
+ln -s ${BASE_DIR}/vimrc ~/.config/nvim/init.vim
 # and bootstrap dein
 if [[ ! -d ~/.dein ]]; then
 	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
@@ -15,6 +16,8 @@ if [[ ! -d ~/.dein ]]; then
 	./installer.sh ~/.dein
 	rm installer.sh
 fi
+# emacs
+ln -s ${BASE_DIR}/emacs.d ~/.emacs.d
 
 # shells
 ln -s ${BASE_DIR}/bashrc ~/.bashrc
