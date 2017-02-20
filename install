@@ -5,9 +5,21 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 linkit () {
 	if (( $# == 1 )); then
-		ln -s ${BASE_DIR}/$1 ~/.$1
+		echo -n Installing $1 ...
+		ln -s ${BASE_DIR}/$1 ~/.$1 2>/dev/null
+		if (( $? == 0 )); then
+			echo ok
+		else
+			echo  fail!
+		fi
 	elif (( $# > 1 )); then
-		ln -s ${BASE_DIR}/$1 $2
+		echo -n Installing $1 to $2 ...
+		ln -s ${BASE_DIR}/$1 $2 2>/dev/null
+		if (( $? == 0 )); then
+			echo ok
+		else
+			echo  fail!
+		fi
 	fi
 }
 
