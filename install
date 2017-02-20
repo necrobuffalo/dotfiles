@@ -1,14 +1,22 @@
 #!/bin/bash
-set -x
 
+# Find our current path
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+linkit () {
+	if (( $# == 1 )); then
+		ln -s ${BASE_DIR}/$1 ~/.$1
+	elif (( $# > 1 )); then
+		ln -s ${BASE_DIR}/$1 $2
+	fi
+}
+
 # git
-ln -s ${BASE_DIR}/gitconfig ~/.gitconfig
+linkit gitconfig
 
 # vim
-ln -s ${BASE_DIR}/vimrc ~/.vimrc
-ln -s ${BASE_DIR}/vimrc ~/.config/nvim/init.vim
+linkit vimrc
+linkit vimrc ~/.config/nvim/init.vim
 # and bootstrap dein
 if [[ ! -d ~/.dein ]]; then
 	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
@@ -17,12 +25,14 @@ if [[ ! -d ~/.dein ]]; then
 	rm installer.sh
 fi
 # emacs
-ln -s ${BASE_DIR}/emacs.d ~/.emacs.d
+linkit emacs.d
 
 # shells
-ln -s ${BASE_DIR}/bashrc ~/.bashrc
-ln -s ${BASE_DIR}/zshrc ~/.zshrc
+linkit bashrc
+linkit zshrc
 
 # tmux
-ln -s ${BASE_DIR}/tmux.conf ~/.tmux.conf
-ln -s ${BASE_DIR}/tmuxline.conf ~/.tmuxline.conf
+linkit tmux.conf
+linkit tmuxline.conf
+
+
