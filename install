@@ -27,24 +27,25 @@ linkit () {
 linkit gitconfig
 
 # vim
-linkit vimrc
-linkit vimrc ~/.config/nvim/init.vim
+#linkit vimrc
+#linkit vimrc ~/.config/nvim/init.vim
 # and bootstrap dein
-if [[ ! -d ~/.dein ]]; then
-	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-	chmod u+x installer.sh
-	./installer.sh ~/.dein
-	rm installer.sh
-fi
+#if [[ ! -d ~/.dein ]]; then
+#	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+#	chmod u+x installer.sh
+#	./installer.sh ~/.dein
+#	rm installer.sh
+#fi
 # emacs
-linkit emacs.d
+#linkit emacs.d
 
 # shells
+linkit profile
 linkit bashrc
-linkit zshrc
+#linkit zshrc
 
 # tmux
-linkit tmux.conf
-linkit tmuxline.conf
+#linkit tmux.conf
+#linkit tmuxline.conf
 
 
