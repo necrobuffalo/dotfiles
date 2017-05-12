@@ -5,21 +5,28 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 linkit () {
 	if (( $# == 1 )); then
-		echo -n Installing $1 ...
-		ln -s ${BASE_DIR}/$1 ~/.$1 2>/dev/null
-		if (( $? == 0 )); then
-			echo ok
-		else
-			echo  fail!
-		fi
+		destpath=~/.$1
 	elif (( $# > 1 )); then
-		echo -n Installing $1 to $2 ...
-		ln -s ${BASE_DIR}/$1 $2 2>/dev/null
-		if (( $? == 0 )); then
-			echo ok
-		else
-			echo  fail!
-		fi
+		destpath=$2
+	else
+		return 1
+	fi
+
+	if [[ -h $destpath ]]; then
+		echo $1 is already linked.
+		return
+	fi
+	if [[ -e $destpath ]]; then
+		echo $1 exists but is not a link. Please move it and rerun the script.
+		return 1
+	fi
+
+	echo -n Installing $1 to $destpath ...
+	ln -s ${BASE_DIR}/$1 $destpath 2>/dev/null
+	if (( $? == 0 )); then
+		echo ok
+	else
+		echo fail!
 	fi
 }
 
@@ -27,25 +34,17 @@ linkit () {
 linkit gitconfig
 
 # vim
-#linkit vimrc
-#linkit vimrc ~/.config/nvim/init.vim
-# and bootstrap dein
-#if [[ ! -d ~/.dein ]]; then
-#	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-#	chmod u+x installer.sh
-#	./installer.sh ~/.dein
-#	rm installer.sh
-#fi
+linkit vimrc
 # emacs
-#linkit emacs.d
+linkit spacemacs
 
 # shells
 linkit profile
 linkit bashrc
-#linkit zshrc
 
-# tmux
-#linkit tmux.conf
-#linkit tmuxline.conf
-
-
+# wms
+linkit Xresources
+linkit urxvt
+mkdir -p ~/.config
+linkit i3 ~/.config/i3
+linkit i3status.conf

@@ -1,0 +1,30 @@
+! URxvt
+! Enable urgency hint on bell character
+URxvt.urgentOnBell: True
+! Disable the scroll bar
+URxvt.scrollBar: False
+! Open URLs in chrome w/ matcher
+URxvt.perl-ext-common: matcher,font-size
+URxvt.url-launcher:    google-chrome
+URxvt.matcher.button:  1
+! Keybinds for font size, requires font-size extension
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.keysym.C-equal:  perl:font-size:reset
+URxvt.keysym.C-slash:  perl:font-size:show
+! Fonts
+URxvt.font:        xft:Hack:size=8
+URxvt.letterSpace: -1
+! URxvt.boldFont: xft:Anonymous Pro Bold:size=10
+! URxvt.italicFont: xft:Anonymous Pro Italic:size=10
+! URxvt.boldItalicFont: xft:Anonymous Pro Bold Italic:size=10
+! Transparency!
+URxvt.transparent: True
+URxvt.shading: 5
+! replace with a theme as needed
+URxvt.background: Black
+URxvt.foreground: White
+
+! Rofi
