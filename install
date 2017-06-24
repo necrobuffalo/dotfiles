@@ -34,6 +34,12 @@ linkit () {
 linkit gitconfig
 
 # vim
+if [[ ! -d ~/.dein ]]; then
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+    chmod u+x installer.sh
+    ./installer.sh ~/.dein
+    rm installer.sh
+fi
 linkit vimrc
 # emacs
 linkit spacemacs
@@ -41,6 +47,7 @@ linkit spacemacs
 # shells
 linkit profile
 linkit bashrc
+linkit zshrc
 
 # wms
 linkit Xresources
