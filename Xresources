@@ -15,16 +15,75 @@ URxvt.keysym.C-S-Down: perl:font-size:decglobal
 URxvt.keysym.C-equal:  perl:font-size:reset
 URxvt.keysym.C-slash:  perl:font-size:show
 ! Fonts
-URxvt.font:        xft:Hack:size=8
+URxvt.font:        xft:Hack:size=10
 URxvt.letterSpace: -1
 ! URxvt.boldFont: xft:Anonymous Pro Bold:size=10
 ! URxvt.italicFont: xft:Anonymous Pro Italic:size=10
 ! URxvt.boldItalicFont: xft:Anonymous Pro Bold Italic:size=10
 ! Transparency!
-URxvt.transparent: True
-URxvt.shading: 5
+!URxvt.transparent: True
+!URxvt.shading: 5
+
 ! replace with a theme as needed
-URxvt.background: Black
-URxvt.foreground: White
+!*color0:	#050504
+!*color1:	#5A6062
+!*color10:	#6D6E6F
+!*color11:	#7F837F
+!*color12:	#717886
+!*color13:	#9E9D9D
+!*color14:	#C2BFBD
+!*color15:	#DDDCDC
+!*color2:	#6D6E6F
+!*color3:	#7F837F
+!*color4:	#717886
+!*color5:	#9E9D9D
+!*color6:	#C2BFBD
+!*color66:	#050504
+!*color7:	#DDDCDC
+!*color8:	#666666
+!*color9:	#5A6062
+!*background:	#050504
+!URxvt*cursorColor:	#DDDCDC
+!URxvt*foreground:	#DDDCDC
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
 
 ! Rofi
+rofi.color-active:	argb:FF050504, #DDDCDC, #050504, #6D6E6F, #050504
+rofi.color-normal:	argb:FF050504, #DDDCDC, #050504, #6D6E6F, #050504
+rofi.color-urgent:	argb:FF050504, #5A6062, #050504, #5A6062, #DDDCDC
+rofi.color-window:	argb:FF050504, #050504, #6D6E6F

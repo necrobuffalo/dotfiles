@@ -1,41 +1,41 @@
 set mouse=
-""""""""
-" dein "
-""""""""
+""""""""""""""""""""""
+" vundle and friends "
+""""""""""""""""""""""
 set nocompatible
-set runtimepath^=~/.dein/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('~/.dein'))
-call dein#add('Shougo/dein.vim')                " plugin manager
-call dein#add('Shougo/neocomplete.vim')         " completion menus
-call dein#add('scrooloose/syntastic')           " highlight incorrect syntax in red
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Shougo/neocomplete.vim'  " completion menus
+Plugin 'scrooloose/syntastic'    " highlight incorrect syntax in red
 
-call dein#add('wincent/command-t')
-call dein#add('bronson/vim-crosshairs')         " only show cursorcolumn/line on active buffer
-"call dein#add('bling/vim-airline')             " fancy modeline
-"call dein#add('edkolev/tmuxline.vim')
-call dein#add('mhinz/vim-signify')
+Plugin 'wincent/command-t'       " fuzzy finder
+Plugin 'bronson/vim-crosshairs'  " only show cursorcolumn/line on active buffer
+Plugin 'bling/vim-airline'       " fancy modeline
+Plugin 'mhinz/vim-signify'       " display VCS info
 
-"call dein#add('marciomazza/vim-brogrammer-theme')
-call dein#end()
+Plugin 'godlygeek/tabular'       " required for vim-markdown
+Plugin 'plasticboy/vim-markdown' " markdown syntax highlighting
 
-if dein#check_install()
-    call dein#install()
-endif
+Plugin 'flazz/vim-colorschemes'
+call vundle#end()
+filetype plugin indent on
 
 """"""""""""
 " settings "
 """"""""""""
-set showcmd
-set splitbelow
-set splitright
+set laststatus=2                 " always display the modeline
+set showcmd                      " show command while typing
+set splitbelow                   " new splits go below
+set splitright                   " new splits go to the right
 
-set cursorcolumn
-set cursorline
+set cursorcolumn                 " highlight column the cursor is on
+set cursorline                   " highlight line the cursor is on
 
 """""""""""""""""""
 " default spacing "
 """""""""""""""""""
-set expandtab
+set expandtab                    " convert tabs to spaces
 set shiftwidth=4
 set tabstop=4
 
@@ -44,10 +44,30 @@ set tabstop=4
 """"""""""
 syntax on
 colorscheme slate
+colorscheme gruvbox
 
-""""""""""
-" python "
-""""""""""
+""""""""""""
+" keybinds "
+""""""""""""
+let mapleader=","
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+""""""""""""""""""""""""""
+" lang-specific settings "
+""""""""""""""""""""""""""
+" ansible, salt, etc.
+augroup filetype_yaml
+  autocmd!
+  autocmd FileType yaml setlocal
+    \ tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
+augroup END
+
+" python
 augroup filetype_python
   autocmd!
   autocmd FileType python setlocal
@@ -60,8 +80,18 @@ augroup filetype_python
   autocmd FileType python syn keyword pythonDecorator True None False self
 augroup END
 
+" makefiles
+augroup filetype_make
+  autocmd!
+  autocmd FileType make setlocal
+    \ noexpandtab
+augroup END
+
 """""""""""
 " plugins "
 """""""""""
 let g:neocomplete#enable_at_startup = 1  " use neocomplete
 let g:syntastic_python_checkers = ['python', 'flake8', 'pylint']
+let g:airline_powerline_fonts=1  " display powerline characters instead of boxes
+let g:signify_vcs_list = ['git', 'hg']
+let g:vim_markdown_frontmatter = 1 " highlight hugo frontmatter

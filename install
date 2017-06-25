@@ -34,11 +34,8 @@ linkit () {
 linkit gitconfig
 
 # vim
-if [[ ! -d ~/.dein ]]; then
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-    chmod u+x installer.sh
-    ./installer.sh ~/.dein
-    rm installer.sh
+if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 linkit vimrc
 # emacs
@@ -52,6 +49,10 @@ linkit zshrc
 # wms
 linkit Xresources
 linkit urxvt
+
 mkdir -p ~/.config
 linkit i3 ~/.config/i3
 linkit i3status.conf
+linkit bspwm ~/.config/bspwm
+linkit sxhkd ~/.config/sxhkd
+linkit polybar ~/.config/polybar
