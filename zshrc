@@ -12,6 +12,7 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 bindkey -e
+setopt prompt_subst
 
 #########################
 # ENVIRONMENT VARIABLES #
@@ -22,10 +23,22 @@ export PAGER=less
 export PATH=~/bin:~/go/bin:${PATH}
 export WORKON_HOME=~/envs
 
+############
+# VCS_INFO #
+############
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git hg
+zstyle ':vcs_info:*' actionformats \
+    '(%b|%a)'
+zstyle ':vcs_info:*' formats       \
+    '(%b)'
+precmd_vcs_info () { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+
 ##########
 # PROMPT #
 ##########
-PROMPT="%B%(?.%F{green}.%F{red})[%D{%I:%M:%S %p}]%f %F{red}%m%f:%F{cyan}%~%f
+PROMPT="%B%(?.%F{green}.%F{red})[%D{%I:%M:%S %p}]%f %F{red}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
 %#%b "
 RPROMPT="%B%(?..:()%b"
 

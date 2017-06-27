@@ -28,6 +28,7 @@ set laststatus=2                 " always display the modeline
 set showcmd                      " show command while typing
 set splitbelow                   " new splits go below
 set splitright                   " new splits go to the right
+set backspace=indent,eol,start
 
 set cursorcolumn                 " highlight column the cursor is on
 set cursorline                   " highlight line the cursor is on
