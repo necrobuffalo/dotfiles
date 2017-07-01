@@ -3,6 +3,7 @@
 sxhkd &
 ~/.fehbg
 setxkbmap -option ctrl:nocaps
+compton &
 mopidy -q &
 
 $HOME/.config/polybar/launch.sh

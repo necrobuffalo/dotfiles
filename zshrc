@@ -72,7 +72,11 @@ weather () {
 ##########
 # EXTRAS #
 ##########
-[[ -f /usr/local/bin/virtualenvwrapper.sh ]] && . /usr/local/bin/virtualenvwrapper.sh
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
+    . /usr/local/bin/virtualenvwrapper.sh
+elif [[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
+    . /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+fi
 [[ -f ~/.wechallrc ]] && . ~/.wechallrc
 [[ -f ~/.openrc ]] && . ~/.openrc
 # Source machine-specific configuration.

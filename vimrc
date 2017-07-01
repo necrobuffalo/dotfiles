@@ -46,6 +46,7 @@ set tabstop=4
 syntax on
 colorscheme slate
 colorscheme gruvbox
+hi Normal guibg=NONE ctermbg=NONE
 
 """"""""""""
 " keybinds "
@@ -86,6 +87,15 @@ augroup filetype_make
   autocmd!
   autocmd FileType make setlocal
     \ noexpandtab
+augroup END
+
+" haskell
+augroup filetype_haskell
+  autocmd!
+  autocmd FileType haskell setlocal
+    \ tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
 augroup END
 
 """""""""""
