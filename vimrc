@@ -21,6 +21,7 @@ Plugin 'plasticboy/vim-markdown' " markdown syntax highlighting
 Plugin 'ElmCast/elm-vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'fatih/vim-go'
+Plugin 'jceb/vim-orgmode'
 
 Plugin 'whatyouhide/vim-gotham'
 call vundle#end()
@@ -109,5 +110,6 @@ augroup END
 let g:neocomplete#enable_at_startup = 1  " use neocomplete
 let g:syntastic_python_checkers = ['python', 'flake8', 'pylint']
 let g:airline_powerline_fonts=1  " display powerline characters instead of boxes
+let g:airline#extensions#tabline#enabled=1
 let g:signify_vcs_list = ['git', 'hg']
 let g:vim_markdown_frontmatter = 1 " highlight hugo frontmatter
