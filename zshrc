@@ -38,9 +38,9 @@ precmd_functions+=( precmd_vcs_info )
 ##########
 # PROMPT #
 ##########
-PROMPT="%B%(?.%F{green}.%F{red})[%D{%I:%M:%S %p}]%f %F{red}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
-%#%b "
-RPROMPT="%B%(?..:()%b"
+PROMPT="%(?.%F{green}.%F{red})[%D{%I:%M:%S %p}]%f %F{red}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
+%# "
+RPROMPT="%(?..:()"
 
 ###########
 # ALIASES #

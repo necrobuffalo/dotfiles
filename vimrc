@@ -17,7 +17,12 @@ Plugin 'mhinz/vim-signify'       " display VCS info
 Plugin 'godlygeek/tabular'       " required for vim-markdown
 Plugin 'plasticboy/vim-markdown' " markdown syntax highlighting
 
-Plugin 'flazz/vim-colorschemes'
+" assorted languages
+Plugin 'ElmCast/elm-vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'fatih/vim-go'
+
+Plugin 'whatyouhide/vim-gotham'
 call vundle#end()
 filetype plugin indent on
 
@@ -44,8 +49,9 @@ set tabstop=4
 " colors "
 """"""""""
 syntax on
-colorscheme slate
-colorscheme gruvbox
+colorscheme gotham
+hi Normal guibg=NONE ctermbg=NONE
+hi Pmenu ctermfg=0 ctermbg=10 guifg=#99d1ce guibg=#091f2e
 
 """"""""""""
 " keybinds "
@@ -86,6 +92,15 @@ augroup filetype_make
   autocmd!
   autocmd FileType make setlocal
     \ noexpandtab
+augroup END
+
+" haskell
+augroup filetype_haskell
+  autocmd!
+  autocmd FileType haskell setlocal
+    \ tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
 augroup END
 
 """""""""""
