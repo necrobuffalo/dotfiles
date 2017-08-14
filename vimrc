@@ -17,11 +17,14 @@ Plugin 'mhinz/vim-signify'       " display VCS info
 Plugin 'godlygeek/tabular'       " required for vim-markdown
 Plugin 'plasticboy/vim-markdown' " markdown syntax highlighting
 
+Plugin 'tpope/vim-speeddating'
+Plugin 'jceb/vim-orgmode'
+
 " assorted languages
 Plugin 'ElmCast/elm-vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'fatih/vim-go'
-Plugin 'jceb/vim-orgmode'
+Plugin 'pearofducks/ansible-vim'
 
 Plugin 'whatyouhide/vim-gotham'
 call vundle#end()
@@ -34,7 +37,8 @@ set laststatus=2                 " always display the modeline
 set showcmd                      " show command while typing
 set splitbelow                   " new splits go below
 set splitright                   " new splits go to the right
-set backspace=indent,eol,start
+set backspace=indent,eol,start   " allow backspacing through beginning of lines
+set number                       " show line numbers
 
 set cursorcolumn                 " highlight column the cursor is on
 set cursorline                   " highlight line the cursor is on
@@ -51,8 +55,21 @@ set tabstop=4
 """"""""""
 syntax on
 colorscheme gotham
-hi Normal guibg=NONE ctermbg=NONE
+hi Normal ctermbg=NONE
 hi Pmenu ctermfg=0 ctermbg=10 guifg=#99d1ce guibg=#091f2e
+
+""""""""""""""""""""
+" GUI only options "
+""""""""""""""""""""
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Fira\ Code\ 12
+  elseif has("gui_macvim")
+    set guifont=Fira\ Code:h12
+  " elseif has("gui_win32")
+  "   set guifont=Fira Code:h11:cANSI
+  endif
+endif
 
 """"""""""""
 " keybinds "
@@ -104,12 +121,13 @@ augroup filetype_haskell
     \ shiftwidth=2
 augroup END
 
-"""""""""""
-" plugins "
-"""""""""""
+"""""""""""""""""""
+" plugin settings "
+"""""""""""""""""""
 let g:neocomplete#enable_at_startup = 1  " use neocomplete
 let g:syntastic_python_checkers = ['python', 'flake8', 'pylint']
 let g:airline_powerline_fonts=1  " display powerline characters instead of boxes
 let g:airline#extensions#tabline#enabled=1
 let g:signify_vcs_list = ['git', 'hg']
 let g:vim_markdown_frontmatter = 1 " highlight hugo frontmatter
+let g:org_indent = 1
