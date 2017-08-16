@@ -14,19 +14,19 @@ Plugin 'bronson/vim-crosshairs'  " only show cursorcolumn/line on active buffer
 Plugin 'bling/vim-airline'       " fancy modeline
 Plugin 'mhinz/vim-signify'       " display VCS info
 
+" assorted languages
+Plugin 'pearofducks/ansible-vim' " ansible
+Plugin 'fatih/vim-go'            " go
+Plugin 'elixir-lang/vim-elixir'  " elixir
+Plugin 'ElmCast/elm-vim'         " elm
+
 Plugin 'godlygeek/tabular'       " required for vim-markdown
 Plugin 'plasticboy/vim-markdown' " markdown syntax highlighting
 
 Plugin 'tpope/vim-speeddating'
 Plugin 'jceb/vim-orgmode'
 
-" assorted languages
-Plugin 'ElmCast/elm-vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'fatih/vim-go'
-Plugin 'pearofducks/ansible-vim'
-
-Plugin 'whatyouhide/vim-gotham'
+Plugin 'ayu-theme/ayu-vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -54,9 +54,9 @@ set tabstop=4
 " colors "
 """"""""""
 syntax on
-colorscheme gotham
-hi Normal ctermbg=NONE
-hi Pmenu ctermfg=0 ctermbg=10 guifg=#99d1ce guibg=#091f2e
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
 
 """"""""""""""""""""
 " GUI only options "
