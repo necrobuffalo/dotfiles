@@ -20,6 +20,7 @@ setopt prompt_subst
 export EDITOR=vim
 export GOPATH=~/go
 export PAGER=less
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=~/bin:~/go/bin:${PATH}
 export WORKON_HOME=~/envs
 
@@ -75,5 +76,6 @@ weather () {
 [[ -f /usr/local/bin/virtualenvwrapper.sh ]] && . /usr/local/bin/virtualenvwrapper.sh
 [[ -f ~/.wechallrc ]] && . ~/.wechallrc
 [[ -f ~/.openrc ]] && . ~/.openrc
+[[ -f /usr/local/etc/profile.d/z.sh ]] && . /usr/local/etc/profile.d/z.sh
 # Source machine-specific configuration.
 [[ -f ~/.localrc ]] && . ~/.localrc
