@@ -62,6 +62,7 @@ fi
 alias which='whence -a'
 alias e='emacsclient -nw'
 alias emacs='emacs -nw'
+alias tf='terraform'
 
 #############
 # FUNCTIONS #

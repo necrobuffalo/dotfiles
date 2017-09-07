@@ -26,6 +26,7 @@ Plugin 'pearofducks/ansible-vim'  " fixes inconsistent highlighting in ansible y
 Plugin 'elixir-lang/vim-elixir'   " elixir syntax highlighting
 Plugin 'ElmCast/elm-vim'          " elm syntax highlighting
 Plugin 'fatih/vim-go'             " go syntax highlighting
+Plugin 'hashivim/vim-terraform'   " terraform syntax highlighting
 
 " colorschemes
 Plugin 'ayu-theme/ayu-vim'        " current color scheme
@@ -126,6 +127,15 @@ augroup filetype_python
   autocmd FileType python syn keyword pythonDecorator True None False self
 augroup END
 
+" terraform
+augroup filetype_terraform
+  autocmd!
+  autocmd FileType terraform setlocal
+    \ tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
+augroup END
+
 " vim
 augroup filetype_vim
   autocmd!
@@ -143,7 +153,6 @@ augroup filetype_yaml
     \ softtabstop=2
     \ shiftwidth=2
 augroup END
-
 
 """""""""""""""""""
 " plugin settings "
