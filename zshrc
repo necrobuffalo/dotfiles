@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/embarber/.zshrc'
 
@@ -20,7 +21,7 @@ setopt prompt_subst
 export EDITOR=vim
 export GOPATH=~/go
 export PAGER=less
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+[[ $(uname) == 'Darwin' ]] && export PATH=/usr/local/opt/python/libexec/bin:${PATH}
 export PATH=~/bin:~/go/bin:${PATH}
 export WORKON_HOME=~/envs
 
@@ -29,10 +30,11 @@ export WORKON_HOME=~/envs
 ############
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
+zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' actionformats \
-    '(%b|%a)'
+    '(%b|%a) %u|%c'
 zstyle ':vcs_info:*' formats       \
-    '(%b)'
+    '(%b) %F{red}%u%F{green}%c%f'
 precmd_vcs_info () { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
