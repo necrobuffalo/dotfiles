@@ -7,34 +7,35 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'Shougo/neocomplete.vim'   " completion menus
-Plugin 'scrooloose/syntastic'     " highlight incorrect syntax in red
-Plugin 'wincent/command-t'        " fuzzy finder
-Plugin 'bronson/vim-crosshairs'   " only show cursorcolumn/line on active buffer
-Plugin 'bling/vim-airline'        " fancy modeline
-Plugin 'mhinz/vim-signify'        " display VCS info
-Plugin 'Yggdroot/indentLine'      " indent info
+Plugin 'Shougo/neocomplete.vim'          " completion menus
+Plugin 'scrooloose/syntastic'            " highlight incorrect syntax in red
+Plugin 'wincent/command-t'               " fuzzy finder
+Plugin 'bronson/vim-crosshairs'          " only show cursorcolumn/line on active buffer
+Plugin 'bling/vim-airline'               " fancy modeline
+Plugin 'mhinz/vim-signify'               " display VCS info
+Plugin 'Yggdroot/indentLine'             " indent info
 
 """"""""""""""""""""
 " LANGUAGE PLUGINS "
 """"""""""""""""""""
-Plugin 'pearofducks/ansible-vim'  " fixes inconsistent highlighting in ansible yaml files
-Plugin 'elixir-lang/vim-elixir'   " elixir syntax highlighting
-Plugin 'ElmCast/elm-vim'          " elm syntax highlighting
-Plugin 'fatih/vim-go'             " go syntax highlighting
-Plugin 'hashivim/vim-terraform'   " terraform syntax highlighting
+Plugin 'pearofducks/ansible-vim'         " fixes inconsistent highlighting in ansible yaml files
+Plugin 'elixir-lang/vim-elixir'          " elixir syntax highlighting
+Plugin 'ElmCast/elm-vim'                 " elm syntax highlighting
+Plugin 'fatih/vim-go'                    " go syntax highlighting
+Plugin 'hashivim/vim-terraform'          " terraform syntax highlighting
 
-Plugin 'godlygeek/tabular'        " required for vim-markdown
-Plugin 'plasticboy/vim-markdown'  " markdown syntax highlighting
+Plugin 'godlygeek/tabular'               " required for vim-markdown
+Plugin 'plasticboy/vim-markdown'         " markdown syntax highlighting
 
-Plugin 'tpope/vim-speeddating'    " recommended for vim-orgmode
-Plugin 'jceb/vim-orgmode'         " do org-mode things in vim
+Plugin 'tpope/vim-speeddating'           " recommended for vim-orgmode
+Plugin 'jceb/vim-orgmode'                " do org-mode things in vim
 
 """"""""""""""""
 " COLORSCHEMES "
 """"""""""""""""
-Plugin 'ayu-theme/ayu-vim'        " current color scheme
-Plugin 'flazz/vim-colorschemes'   " library of other color schemes I should try sometime
+Plugin 'ayu-theme/ayu-vim'               " current color scheme
+Plugin 'flazz/vim-colorschemes'          " library of other color schemes I should try sometime
+Plugin 'vim-airline/vim-airline-themes'  " library of tab/modeline themes
 call vundle#end()
 filetype plugin indent on
 
@@ -64,7 +65,7 @@ set softtabstop=4                " ignored since we have expandtab set
 """"""""""
 syntax on
 set termguicolors                " read guibg, guifg etc. even in terminal
-let ayucolor="dark"              " set ayu flavor (dark, mirage, light)
+let ayucolor="mirage"            " set ayu flavor (dark, mirage, light)
 colorscheme ayu                  " choose colorscheme
 
 """""""
@@ -164,6 +165,7 @@ augroup END
 " airline
 let g:airline_powerline_fonts=1  " display powerline characters instead of boxes
 let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='lucius'
 
 " command-t
 let g:CommandTMaxCachedDirectories=10
