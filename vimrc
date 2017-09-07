@@ -1,19 +1,28 @@
 set mouse=
-""""""""""""""""""""""
-" vundle and friends "
-""""""""""""""""""""""
+""""""""""""""""""
+" VUNDLE/PLUGINS "
+""""""""""""""""""
 set nocompatible
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'Shougo/neocomplete.vim'   " completion menus
 Plugin 'scrooloose/syntastic'     " highlight incorrect syntax in red
-
 Plugin 'wincent/command-t'        " fuzzy finder
 Plugin 'bronson/vim-crosshairs'   " only show cursorcolumn/line on active buffer
 Plugin 'bling/vim-airline'        " fancy modeline
 Plugin 'mhinz/vim-signify'        " display VCS info
 Plugin 'Yggdroot/indentLine'      " indent info
+
+""""""""""""""""""""
+" LANGUAGE PLUGINS "
+""""""""""""""""""""
+Plugin 'pearofducks/ansible-vim'  " fixes inconsistent highlighting in ansible yaml files
+Plugin 'elixir-lang/vim-elixir'   " elixir syntax highlighting
+Plugin 'ElmCast/elm-vim'          " elm syntax highlighting
+Plugin 'fatih/vim-go'             " go syntax highlighting
+Plugin 'hashivim/vim-terraform'   " terraform syntax highlighting
 
 Plugin 'godlygeek/tabular'        " required for vim-markdown
 Plugin 'plasticboy/vim-markdown'  " markdown syntax highlighting
@@ -21,21 +30,16 @@ Plugin 'plasticboy/vim-markdown'  " markdown syntax highlighting
 Plugin 'tpope/vim-speeddating'    " recommended for vim-orgmode
 Plugin 'jceb/vim-orgmode'         " do org-mode things in vim
 
-" assorted languages
-Plugin 'pearofducks/ansible-vim'  " fixes inconsistent highlighting in ansible yaml files
-Plugin 'elixir-lang/vim-elixir'   " elixir syntax highlighting
-Plugin 'ElmCast/elm-vim'          " elm syntax highlighting
-Plugin 'fatih/vim-go'             " go syntax highlighting
-Plugin 'hashivim/vim-terraform'   " terraform syntax highlighting
-
-" colorschemes
+""""""""""""""""
+" COLORSCHEMES "
+""""""""""""""""
 Plugin 'ayu-theme/ayu-vim'        " current color scheme
 Plugin 'flazz/vim-colorschemes'   " library of other color schemes I should try sometime
 call vundle#end()
 filetype plugin indent on
 
 """"""""""""
-" settings "
+" SETTINGS "
 """"""""""""
 set laststatus=2                 " always display the modeline
 set showcmd                      " show command while typing
@@ -47,25 +51,25 @@ set number                       " show line numbers
 set cursorcolumn                 " highlight column the cursor is on
 set cursorline                   " highlight line the cursor is on
 
-"""""""""""""""""""
-" default spacing "
-"""""""""""""""""""
+""""""""""""""
+" WHITESPACE "
+""""""""""""""
 set expandtab                    " pressing tab should insert spaces
 set tabstop=4                    " display existing tab characters as 4 spaces
 set shiftwidth=4                 " indent by 4 using reindent commands (>> and <<)
 set softtabstop=4                " ignored since we have expandtab set
 
 """"""""""
-" colors "
+" COLORS "
 """"""""""
 syntax on
 set termguicolors                " read guibg, guifg etc. even in terminal
 let ayucolor="dark"              " set ayu flavor (dark, mirage, light)
 colorscheme ayu                  " choose colorscheme
 
-""""""""""""""""""""
-" GUI only options "
-""""""""""""""""""""
+"""""""
+" GUI "
+"""""""
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Fira\ Code\ 12
@@ -77,7 +81,7 @@ if has("gui_running")
 endif
 
 """"""""""""
-" keybinds "
+" KEYBINDS "
 """"""""""""
 let mapleader=","
 nnoremap <C-J> <C-W><C-J>
@@ -86,7 +90,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 """"""""""""""""""""""""""
-" lang-specific settings "
+" LANG-SPECIFIC SETTINGS "
 """"""""""""""""""""""""""
 " haskell
 augroup filetype_haskell
@@ -139,7 +143,7 @@ augroup END
 " vim
 augroup filetype_vim
   autocmd!
-  autocmd FIleType vim setlocal
+  autocmd FileType vim setlocal
     \ tabstop=2
     \ softtabstop=2
     \ shiftwidth=2
@@ -155,7 +159,7 @@ augroup filetype_yaml
 augroup END
 
 """""""""""""""""""
-" plugin settings "
+" PLUGIN SETTINGS "
 """""""""""""""""""
 " airline
 let g:airline_powerline_fonts=1  " display powerline characters instead of boxes
