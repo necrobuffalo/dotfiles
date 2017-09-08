@@ -48,6 +48,8 @@ set splitbelow                   " new splits go below
 set splitright                   " new splits go to the right
 set backspace=indent,eol,start   " allow backspacing through beginning of lines
 set number                       " show line numbers
+set wildmenu                     " show menu when tab completing
+set wildmode=longest:full        " when tab completing, only complete through common text
 
 set cursorcolumn                 " highlight column the cursor is on
 set cursorline                   " highlight line the cursor is on
