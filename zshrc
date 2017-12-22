@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/embarber/.zshrc'
 
@@ -20,6 +21,7 @@ setopt prompt_subst
 export EDITOR=vim
 export GOPATH=~/go
 export PAGER=less
+[[ $(uname) == 'Darwin' ]] && export PATH=/usr/local/opt/python/libexec/bin:${PATH}
 export PATH=~/bin:~/go/bin:${PATH}
 export WORKON_HOME=~/envs
 
@@ -28,19 +30,20 @@ export WORKON_HOME=~/envs
 ############
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
+zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' actionformats \
-    '(%b|%a)'
+    '(%b|%a) %u|%c'
 zstyle ':vcs_info:*' formats       \
-    '(%b)'
+    '(%b) %F{red}%u%F{green}%c%f'
 precmd_vcs_info () { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
 ##########
 # PROMPT #
 ##########
-PROMPT="%B%(?.%F{green}.%F{red})[%D{%I:%M:%S %p}]%f %F{red}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
-%#%b "
-RPROMPT="%B%(?..:()%b"
+PROMPT="%(?.%F{green}.%F{red})[%D{%I:%M:%S %p}]%f %F{red}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
+%# "
+RPROMPT="%(?..:()"
 
 ###########
 # ALIASES #
@@ -61,6 +64,7 @@ fi
 alias which='whence -a'
 alias e='emacsclient -nw'
 alias emacs='emacs -nw'
+alias tf='terraform'
 
 #############
 # FUNCTIONS #
@@ -79,5 +83,6 @@ elif [[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
 fi
 [[ -f ~/.wechallrc ]] && . ~/.wechallrc
 [[ -f ~/.openrc ]] && . ~/.openrc
+[[ -f /usr/local/etc/profile.d/z.sh ]] && . /usr/local/etc/profile.d/z.sh
 # Source machine-specific configuration.
 [[ -f ~/.localrc ]] && . ~/.localrc
