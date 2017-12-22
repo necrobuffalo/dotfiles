@@ -5,7 +5,7 @@ URxvt.urgentOnBell: True
 URxvt.scrollBar: False
 ! Open URLs in chrome w/ matcher
 URxvt.perl-ext-common: matcher,font-size
-URxvt.url-launcher:    google-chrome
+URxvt.url-launcher:    vivaldi
 URxvt.matcher.button:  1
 ! Keybinds for font size, requires font-size extension
 URxvt.keysym.C-Up:     perl:font-size:increase
@@ -23,65 +23,40 @@ URxvt.font:        xft:TamzenForPowerline:size=10
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0200/df00
 
-! replace with a theme as needed
-!*color0:	#050504
-!*color1:	#5A6062
-!*color10:	#6D6E6F
-!*color11:	#7F837F
-!*color12:	#717886
-!*color13:	#9E9D9D
-!*color14:	#C2BFBD
-!*color15:	#DDDCDC
-!*color2:	#6D6E6F
-!*color3:	#7F837F
-!*color4:	#717886
-!*color5:	#9E9D9D
-!*color6:	#C2BFBD
-!*color66:	#050504
-!*color7:	#DDDCDC
-!*color8:	#666666
-!*color9:	#5A6062
-!*background:	#050504
-!URxvt*cursorColor:	#DDDCDC
-!URxvt*foreground:	#DDDCDC
-! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
+*.foreground:   #98d1ce
+! *.background:   #0a0f14
+*.cursorColor:  #98d1ce
 
-! black
-*.color0:       #282a2e
-*.color8:       #373b41
+*.color0:       #0a0f14
+*.color8:       #10151b
 
-! red
-*.color1:       #a54242
-*.color9:       #cc6666
+*.color1:       #c33027
+*.color9:       #d26939
 
-! green
-*.color2:       #8c9440
-*.color10:      #b5bd68
+*.color2:       #26a98b
+*.color10:      #081f2d
 
-! yellow
-*.color3:       #de935f
-*.color11:      #f0c674
+*.color3:       #edb54b
+*.color11:      #245361
 
-! blue
-*.color4:       #5f819d
-*.color12:      #81a2be
+*.color4:       #195465
+*.color12:      #093748
 
-! magenta
-*.color5:       #85678f
-*.color13:      #b294bb
+*.color5:       #4e5165
+*.color13:      #888ba5
 
-! cyan
-*.color6:       #5e8d87
-*.color14:      #8abeb7
+*.color6:       #33859d
+*.color14:      #599caa
 
-! white
-*.color7:       #707880
-*.color15:      #c5c8c6
+*.color7:       #98d1ce
+*.color15:      #d3ebe9
 
 ! Rofi
+rofi.font: TamzenForPowerline 10
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
+rofi.width: 30
+rofi.lines: 10
 rofi.color-active:	argb:FF050504, #DDDCDC, #050504, #6D6E6F, #050504
 rofi.color-normal:	argb:FF050504, #DDDCDC, #050504, #6D6E6F, #050504
 rofi.color-urgent:	argb:FF050504, #5A6062, #050504, #5A6062, #DDDCDC
