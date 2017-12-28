@@ -67,7 +67,7 @@ set softtabstop=4                " ignored since we have expandtab set
 """"""""""
 syntax on
 set termguicolors                " read guibg, guifg etc. even in terminal
-let ayucolor="mirage"            " set ayu flavor (dark, mirage, light)
+let ayucolor="dark"              " set ayu flavor (dark, mirage, light)
 colorscheme ayu                  " choose colorscheme
 
 """""""

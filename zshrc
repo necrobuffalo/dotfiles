@@ -1,6 +1,9 @@
 zmodload zsh/zprof
 # The following lines were added by compinstall
-zstyle :compinstall filename '/Users/embarber/.zshrc'
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' list-colors ''
+zstyle :compinstall filename '/home/taron/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -15,12 +18,17 @@ SAVEHIST=1000
 bindkey -e
 setopt prompt_subst
 
+####################
+# DEFAULT PROGRAMS #
+####################
+export EDITOR=vim
+export PAGER=less
+export BROWSER=firefox
+
 #########################
 # ENVIRONMENT VARIABLES #
 #########################
-export EDITOR=vim
 export GOPATH=~/go
-export PAGER=less
 [[ $(uname) == 'Darwin' ]] && export PATH=/usr/local/opt/python/libexec/bin:${PATH}
 export PATH=~/bin:~/go/bin:${PATH}
 export WORKON_HOME=~/envs
@@ -48,7 +56,7 @@ RPROMPT="%(?..:()"
 ###########
 # ALIASES #
 ###########
-# Fancy colors
+# Output highlighting
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
@@ -62,9 +70,18 @@ fi
 
 # QOL
 alias which='whence -a'
+alias tf='terraform'
+
+# editors
 alias e='emacsclient -nw'
 alias emacs='emacs -nw'
-alias tf='terraform'
+
+# typos
+alias pamcan='pacman'
+
+# config files
+#alias -g zshrc=$HOME/.zshrc
+#alias -g vimrc=$HOME/.vimrc
 
 #############
 # FUNCTIONS #
@@ -86,3 +103,6 @@ fi
 [[ -f /usr/local/etc/profile.d/z.sh ]] && . /usr/local/etc/profile.d/z.sh
 # Source machine-specific configuration.
 [[ -f ~/.localrc ]] && . ~/.localrc
+
+# Squash any nonzero return from sourcing stuff (localrc might not exist)
+true
