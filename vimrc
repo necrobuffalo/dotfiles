@@ -23,6 +23,7 @@ Plugin 'elixir-lang/vim-elixir'          " elixir syntax highlighting
 Plugin 'ElmCast/elm-vim'                 " elm syntax highlighting
 Plugin 'fatih/vim-go'                    " go syntax highlighting
 Plugin 'hashivim/vim-terraform'          " terraform syntax highlighting
+Plugin 'cespare/vim-toml'                " toml syntax highlighting (mostly for rust)
 
 Plugin 'godlygeek/tabular'               " required for vim-markdown
 Plugin 'plasticboy/vim-markdown'         " markdown syntax highlighting

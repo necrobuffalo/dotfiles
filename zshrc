@@ -12,11 +12,11 @@ compinit
 #################
 # SHELL OPTIONS #
 #################
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-bindkey -e
-setopt prompt_subst
+HISTFILE=~/.histfile  # path to where to put the history file
+HISTSIZE=1000         # lines to save in history in memory
+SAVEHIST=1000         # lines to save in history on disk
+bindkey -e            # use emacs keybindings, rather than vim
+setopt prompt_subst   # expand variables in prompt
 
 ####################
 # DEFAULT PROGRAMS #
@@ -29,9 +29,10 @@ export BROWSER=firefox
 # ENVIRONMENT VARIABLES #
 #########################
 export GOPATH=~/go
+# python is in a weird place if using homebrew
 [[ $(uname) == 'Darwin' ]] && export PATH=/usr/local/opt/python/libexec/bin:${PATH}
 export PATH=~/bin:~/go/bin:${PATH}
-export WORKON_HOME=~/envs
+export WORKON_HOME=~/.venvs
 
 ############
 # VCS_INFO #
@@ -89,6 +90,13 @@ alias pamcan='pacman'
 weather () {
     curl wttr.in/${1:-pdx}
 }
+flushcache () {
+    if [[ -f /usr/bin/dscacheutil ]]; then
+        sudo /usr/bin/dscacheutil -flushcache
+    else
+        service nscd restart
+    fi
+}
 
 ##########
 # EXTRAS #
@@ -99,7 +107,6 @@ elif [[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
     . /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 [[ -f ~/.wechallrc ]] && . ~/.wechallrc
-[[ -f ~/.openrc ]] && . ~/.openrc
 [[ -f /usr/local/etc/profile.d/z.sh ]] && . /usr/local/etc/profile.d/z.sh
 # Source machine-specific configuration.
 [[ -f ~/.localrc ]] && . ~/.localrc
