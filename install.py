@@ -38,6 +38,9 @@ if __name__ == "__main__":
     # shells
     copy_file('zshrc', '~/.zshrc')
 
+    copy_file('gitconfig', '~/.gitconfig')
+    copy_file('nethackrc', '~/.nethackrc')
+
     copy_file('Xresources', '~/.Xresources')
     copy_file('urxvt', '~/.urxvt')
 

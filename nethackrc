@@ -1,0 +1,6 @@
+OPTIONS=autopickup
+OPTIONS=pickup_types:$%?!/
+
+OPTIONS=color
+
+OPTIONS=time
