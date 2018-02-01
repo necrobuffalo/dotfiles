@@ -96,6 +96,8 @@ nnoremap <C-H> <C-W><C-H>
 """"""""""""""""""""""""""
 " LANG-SPECIFIC SETTINGS "
 """"""""""""""""""""""""""
+" All autocommand groups should start with autocmd! to clear all autocommands
+" in that group. This prevents duplicating autocommands when sourcing vimrc.
 " haskell
 augroup filetype_haskell
   autocmd!
@@ -156,6 +158,10 @@ augroup END
 " yaml, ansible, salt, etc.
 augroup filetype_yaml
   autocmd!
+  autocmd FileType ansible setlocal
+    \ tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
   autocmd FileType yaml setlocal
     \ tabstop=2
     \ softtabstop=2

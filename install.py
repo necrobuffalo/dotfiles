@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -6,8 +6,7 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 def copy_file(filename, dest):
     src = BASE_DIR + '/' + filename
     if os.path.exists(os.path.expanduser(dest)):
-        print(filename + ' already exists. ', end='')
-        copy_anyway = input('Copy anyway? [y/N] ')
+        copy_anyway = input(filename + ' already exists. Copy anyway? [y/N] ')
         if copy_anyway not in ['y', 'Y']:
             return
 
@@ -15,7 +14,7 @@ def copy_file(filename, dest):
     os.system('cp -r ' + src + ' ' + dest)
 
 def install_vundle():
-    if os.path.exists('/home/taron/.vim/bundle/Vundle.vim'):
+    if os.path.exists(os.path.expanduser('~/.vim/bundle/Vundle.vim')):
         print("Vundle dir already exists, skipping")
     else:
         os.system('git clone https://github.com/VundleVim/Vundle.vim.git '
