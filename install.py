@@ -3,6 +3,20 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
+FILE_MAP = {
+    'vimrc': '~/.vimrc',
+    'nvim': '~/.config/nvim',
+    'zshrc': '~/.zshrc',
+    'gitconfig': '~/.gitconfig',
+    'nethackrc': '~/.nethackrc',
+    'Xresources': '~/.Xresources',
+    'urxvt': '~/.urxvt',
+    'compton.conf': '~/.compton.conf',
+    'bspwm': '~/.config/bspwm',
+    'sxhkd': '~/.config/sxhkd',
+    'polybar': '~/.config/polybar',
+    'dunst': '~/.config/dunst',
+}
 
 def copy_file(filename, dest):
     src = BASE_DIR + '/' + filename
@@ -22,6 +36,9 @@ def install_vundle():
         os.system('git clone https://github.com/VundleVim/Vundle.vim.git '
                   '~/.vim/bundle/Vundle.vim')
 
+    # install plugins in vimrc
+    os.system('vim +PluginInstall +qall')
+
 
 def install_plug():
     if os.path.exists(os.path.expanduser('~/.local/share/nvim/site/autoload/plug.vim')):
@@ -30,23 +47,6 @@ def install_plug():
         os.system('curl -fLo ~/.local/share/nvim/site/autoload/plug.vim '
                   '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 
-
-def copy_vimrc():
-    # need vundle to install plugins
-    install_vundle()
-
-    # copy vimrc into place
-    copy_file('vimrc', '~/.vimrc')
-    # install plugins in vimrc
-    os.system('vim +PluginInstall +qall')
-
-
-def copy_nvimrc():
-    # get vim-plug to install plugins
-    install_plug()
-
-    # copy nvim/init.vim into place
-    copy_file('nvim', '~/.config/nvim')
     # install nvim plugins
     os.system('nvim +PlugInstall +qall')
 
@@ -54,24 +54,10 @@ def copy_nvimrc():
 if __name__ == "__main__":
     os.system('mkdir -p ~/.config')
 
+    for key, value in FILE_MAP.items():
+        copy_file(key, value)
+
     # vim
-    copy_vimrc()
-
+    install_vundle()
     # nvim
-    copy_nvimrc()
-
-    # shells
-    copy_file('zshrc', '~/.zshrc')
-
-    copy_file('gitconfig', '~/.gitconfig')
-    copy_file('nethackrc', '~/.nethackrc')
-
-    copy_file('Xresources', '~/.Xresources')
-    copy_file('urxvt', '~/.urxvt')
-
-    # wms
-    copy_file('compton.conf', '~/.compton.conf')
-    copy_file('bspwm', '~/.config/bspwm')
-    copy_file('sxhkd', '~/.config/sxhkd')
-    copy_file('polybar', '~/.config/polybar')
-    copy_file('dunst', '~/.config/dunst')
+    install_plug()
