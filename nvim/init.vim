@@ -1,47 +1,74 @@
 set mouse=
-""""""""""""""""""
-" VUNDLE/PLUGINS "
-""""""""""""""""""
-set nocompatible
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+"""""""""""
+" PLUGINS "
+"""""""""""
+call plug#begin('~/.local/share/nvim/plugged')
+" Automatic syntax checker.
+Plug 'neomake/neomake'
+" Fuzzy finder, doesn't require the setup of command-t.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+" only show cursorcolumn/line on active buffer
+Plug 'bronson/vim-crosshairs'            
+" Fancier modeline.
+Plug 'bling/vim-airline'
+" Display VCS info in the sidebar (additions, deletions, changes.)
+Plug 'mhinz/vim-signify'
+" Highlight indentation.
+Plug 'Yggdroot/indentLine'
 
-Plugin 'Shougo/deoplete.nvim'            " completion menus
-Plugin 'roxma/nvim-yarp'                 " deoplete vim compat
-Plugin 'roxma/vim-hug-neovim-rpc'        " deoplete vim compat
-Plugin 'scrooloose/syntastic'            " highlight incorrect syntax in red
-Plugin 'wincent/command-t'               " fuzzy finder
-Plugin 'bronson/vim-crosshairs'          " only show cursorcolumn/line on active buffer
-Plugin 'bling/vim-airline'               " fancy modeline
-Plugin 'mhinz/vim-signify'               " display VCS info
-Plugin 'Yggdroot/indentLine'             " indent info
+""""""""""""""
+" COMPLETION "
+""""""""""""""
+" Provides basic completion menus based on things previously typed.
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Adds python support via jedi to deoplete.
+Plug 'zchee/deoplete-jedi'
+" Adds rust support via racer to deoplete.
+Plug 'sebastianmarkow/deoplete-rust'
+" Adds generalized completion to deoplete using vim's built in syntax
+" highlighting.
+Plug 'Shougo/neco-syntax'
 
 """"""""""""""""""""
 " LANGUAGE PLUGINS "
 """"""""""""""""""""
-Plugin 'pearofducks/ansible-vim'         " fixes inconsistent highlighting in ansible yaml files
-Plugin 'elixir-lang/vim-elixir'          " elixir syntax highlighting
-Plugin 'ElmCast/elm-vim'                 " elm syntax highlighting
-Plugin 'fatih/vim-go'                    " go syntax highlighting
-Plugin 'rust-lang/rust.vim'              " rust syntax highlighting
-Plugin 'hashivim/vim-terraform'          " terraform syntax highlighting
-Plugin 'cespare/vim-toml'                " toml syntax highlighting (mostly for rust)
+" Fixes inconsistent highlighting of ansible yaml files.
+Plug 'pearofducks/ansible-vim'
+" Elixir syntax highlighting
+Plug 'elixir-lang/vim-elixir'
+" Elm syntax highlighting
+Plug 'ElmCast/elm-vim'
+" Go syntax highlighting
+Plug 'fatih/vim-go'
+" Rust syntax highlighting.
+Plug 'rust-lang/rust.vim'
+" Terraform syntax highlighting.
+Plug 'hashivim/vim-terraform'
+" Toml syntax highlighting, mostly for rust and cargo files.
+Plug 'cespare/vim-toml'
 
-Plugin 'godlygeek/tabular'               " required for vim-markdown
-Plugin 'plasticboy/vim-markdown'         " markdown syntax highlighting
+" Dependency of vim-markdown.
+Plug 'godlygeek/tabular'
+" Markdown syntax highlighting.
+Plug 'plasticboy/vim-markdown'
 
-Plugin 'tpope/vim-speeddating'           " recommended for vim-orgmode
-Plugin 'jceb/vim-orgmode'                " do org-mode things in vim
+" Recommended for vim-orgmode.
+Plug 'tpope/vim-speeddating'
+" Emacs org-mode but for vim.
+Plug 'jceb/vim-orgmode'
 
 """"""""""""""""
 " COLORSCHEMES "
 """"""""""""""""
-Plugin 'ayu-theme/ayu-vim'               " current color scheme
-Plugin 'flazz/vim-colorschemes'          " library of other color schemes I should try sometime
-Plugin 'vim-airline/vim-airline-themes'  " library of tab/modeline themes
-call vundle#end()
-filetype plugin indent on
+" Current color scheme.
+Plug 'ayu-theme/ayu-vim'
+" Library of alternate color schemes.
+Plug 'flazz/vim-colorschemes'
+" Library of tab and modeline themes.
+Plug 'vim-airline/vim-airline-themes'
+
+" Done installing plugins.
+call plug#end()
 
 """"""""""""
 " SETTINGS "
@@ -100,8 +127,6 @@ nnoremap <C-H> <C-W><C-H>
 """"""""""""""""""""""""""
 " LANG-SPECIFIC SETTINGS "
 """"""""""""""""""""""""""
-" All autocommand groups should start with autocmd! to clear all autocommands
-" in that group. This prevents duplicating autocommands when sourcing vimrc.
 " haskell
 augroup filetype_haskell
   autocmd!
@@ -162,10 +187,6 @@ augroup END
 " yaml, ansible, salt, etc.
 augroup filetype_yaml
   autocmd!
-  autocmd FileType ansible setlocal
-    \ tabstop=2
-    \ softtabstop=2
-    \ shiftwidth=2
   autocmd FileType yaml setlocal
     \ tabstop=2
     \ softtabstop=2
@@ -176,23 +197,29 @@ augroup END
 " PLUGIN SETTINGS "
 """""""""""""""""""
 " airline
-let g:airline_powerline_fonts=1  " display powerline characters instead of boxes
+" Display powerline characters instead of boxes.
+let g:airline_powerline_fonts=1
+" Use airline for the tab bar too.
 let g:airline#extensions#tabline#enabled=1
+" Set the font for the modeline and tab bar.
 let g:airline_theme='lucius'
-
-" command-t
-let g:CommandTMaxCachedDirectories=10
 
 " indentline
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
-let g:indentLine_fileTypeExclude = ['command-t', 'help'] " exclude some things from showing indent lines
+" Help text doesn't need to show the indent lines.
+let g:indentLine_fileTypeExclude = ['help']
 
 " markdown
 let g:vim_markdown_frontmatter = 1 " highlight hugo frontmatter
 
-" deoplete
+" neocomplete
+" Use deoplete.
 let g:deoplete#enable_at_startup = 1  " use deoplete
+" Rust completions for deoplete need to know the path to racer.
+let g:deoplete#sources#rust#racer_binary='~/.cargo/bin/racer'
+" Rust completions also need the rust source cloned somewhere.
+let g:deoplete#sources#rust#rust_source_path='~/src/rust/src'
 
 " orgmode
 let g:org_indent = 1
@@ -200,5 +227,7 @@ let g:org_indent = 1
 " signify
 let g:signify_vcs_list = ['git', 'hg']
 
-" syntastic
-let g:syntastic_python_checkers = ['python', 'flake8', 'pylint']
+" neomake
+" Run all relevant neomake makers on every write, and on a 750ms delay after
+" normal mode changes.
+call neomake#configure#automake('nw', 750)
