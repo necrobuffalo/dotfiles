@@ -6,6 +6,7 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 FILE_MAP = {
     'vimrc': '~/.vimrc',
     'nvim': '~/.config/nvim',
+    'zprofile': '~/.zprofile',
     'zshrc': '~/.zshrc',
     'gitconfig': '~/.gitconfig',
     'nethackrc': '~/.nethackrc',

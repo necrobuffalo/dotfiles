@@ -1,8 +1,15 @@
 [user]
-	name = Taron Barber
-	email = ecbarber1@gmail.com
+	name = Adam Barber
+	email = tseivara@fastmail.com
+[pull]
+    rebase = true
 [alias]
+    br = branch
 	co = checkout
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    diff-log = "!f() { git log --oneline --format='%h %an %ar %s' $1; }; f"
+    last = show HEAD
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
     unstash = stash pop
-    unstage = reset HEAD
+	ctags = !.git/hooks/ctags
+[init]
+	templatedir = ~/.git_template

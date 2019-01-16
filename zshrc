@@ -16,6 +16,7 @@ HISTFILE=~/.histfile  # path to where to put the history file
 HISTSIZE=1000         # lines to save in history in memory
 SAVEHIST=1000         # lines to save in history on disk
 bindkey -e            # use emacs keybindings, rather than vim
+setopt HIST_IGNORE_ALL_DUPS
 setopt prompt_subst   # expand variables in prompt
 
 ####################
@@ -23,7 +24,7 @@ setopt prompt_subst   # expand variables in prompt
 ####################
 export EDITOR=vim
 export PAGER=less
-export BROWSER=firefox
+export BROWSER=google-chrome
 
 #########################
 # ENVIRONMENT VARIABLES #
@@ -31,8 +32,9 @@ export BROWSER=firefox
 export GOPATH=~/go
 # python is in a weird place if using homebrew
 [[ $(uname) == 'Darwin' ]] && export PATH=/usr/local/opt/python/libexec/bin:${PATH}
-export PATH=~/bin:~/go/bin:${PATH}
+export PATH=~/bin:~/.fzf/bin:~/go/bin:~/.local/bin:${PATH}
 export WORKON_HOME=~/.venvs
+export PATH=~/src/arcanist/arcanist/bin:${PATH}
 
 ############
 # VCS_INFO #
@@ -65,24 +67,34 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 if [[ $(uname) == 'Darwin' ]]; then
     alias ls='ls -G'
+    alias sl='ls -G'
 else
     alias ls='ls --color=auto'
+    alias sl='ls --color=auto'
 fi
 
 # QOL
 alias which='whence -a'
 alias tf='terraform'
 
+# git
+alias ga='git add'
+alias gc='git commit'
+alias gco='git checkout'
+
 # editors
+alias vim='nvim'
 alias e='emacsclient -nw'
 alias emacs='emacs -nw'
 
 # typos
 alias pamcan='pacman'
 
-# config files
+# named directories
 #alias -g zshrc=$HOME/.zshrc
 #alias -g vimrc=$HOME/.vimrc
+
+alias nvimrc='nvim $HOME/.config/nvim/init.vim'
 
 #############
 # FUNCTIONS #
@@ -97,6 +109,9 @@ flushcache () {
         service nscd restart
     fi
 }
+clear_pyc () {
+    find $1 -name '*.pyc' -delete -print
+}
 
 ##########
 # EXTRAS #
@@ -108,8 +123,12 @@ elif [[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
 fi
 [[ -f ~/.wechallrc ]] && . ~/.wechallrc
 [[ -f /usr/local/etc/profile.d/z.sh ]] && . /usr/local/etc/profile.d/z.sh
+[[ -f ~/src/z/z.sh ]] && . ~/src/z/z.sh
+[[ -f ~/.fzf.zsh ]] && . ~/.fzf.zsh
 # Source machine-specific configuration.
 [[ -f ~/.localrc ]] && . ~/.localrc
 
 # Squash any nonzero return from sourcing stuff (localrc might not exist)
 true
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

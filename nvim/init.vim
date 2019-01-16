@@ -6,15 +6,21 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Automatic syntax checker.
 Plug 'neomake/neomake'
 " Fuzzy finder, doesn't require the setup of command-t.
-Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " only show cursorcolumn/line on active buffer
 Plug 'bronson/vim-crosshairs'            
 " Fancier modeline.
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 " Display VCS info in the sidebar (additions, deletions, changes.)
 Plug 'mhinz/vim-signify'
+" Some more git stuff.
+Plug 'tpope/vim-fugitive'
 " Highlight indentation.
 Plug 'Yggdroot/indentLine'
+" Comment stuff out
+Plug 'tpope/vim-commentary'
+" Sessions
+Plug 'tpope/vim-obsession'
 
 """"""""""""""
 " COMPLETION "
@@ -23,8 +29,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Adds python support via jedi to deoplete.
 Plug 'zchee/deoplete-jedi'
-" Adds rust support via racer to deoplete.
-Plug 'sebastianmarkow/deoplete-rust'
+" Adds rust support to deoplete via racer.
+Plug 'racer-rust/vim-racer'
 " Adds generalized completion to deoplete using vim's built in syntax
 " highlighting.
 Plug 'Shougo/neco-syntax'
@@ -65,7 +71,11 @@ Plug 'ayu-theme/ayu-vim'
 " Library of alternate color schemes.
 Plug 'flazz/vim-colorschemes'
 " Library of tab and modeline themes.
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
+" Even more colorschemes!
+Plug 'rafi/awesome-vim-colorschemes'
+" And more colorschemes.
+Plug 'chriskempson/base16-vim'
 
 " Done installing plugins.
 call plug#end()
@@ -99,7 +109,9 @@ set softtabstop=4                " ignored since we have expandtab set
 syntax on
 set termguicolors                " read guibg, guifg etc. even in terminal
 let ayucolor="mirage"             " set ayu flavor (dark, mirage, light)
-colorscheme ayu                  " choose colorscheme
+"colorscheme ayu                  " choose colorscheme
+set bg=dark
+colorscheme rakr
 
 """""""
 " GUI "
@@ -159,11 +171,19 @@ augroup filetype_python
     \ tabstop=4
     \ softtabstop=4
     \ shiftwidth=4
-    \ textwidth=80
     \ foldmethod=indent
 
   let python_highlight_all = 1
   autocmd FileType python syn keyword pythonDecorator True None False self
+augroup END
+
+" rust
+augroup filetype_rust
+  autocmd!
+  au FileType rust nmap gd <Plug>(rust-def)
+  au FileType rust nmap gs <Plug>(rust-def-split)
+  au FileType rust nmap gx <Plug>(rust-def-vertical)
+  au FileType rust nmap <leader>gd <Plug>(rust-doc)
 augroup END
 
 " terraform
@@ -198,11 +218,11 @@ augroup END
 """""""""""""""""""
 " airline
 " Display powerline characters instead of boxes.
-let g:airline_powerline_fonts=1
+" let g:airline_powerline_fonts=1
 " Use airline for the tab bar too.
-let g:airline#extensions#tabline#enabled=1
-" Set the font for the modeline and tab bar.
-let g:airline_theme='lucius'
+" let g:airline#extensions#tabline#enabled=1
+" Set the theme for the modeline and tab bar.
+" let g:airline_theme='lucius'
 
 " indentline
 let g:indentLine_showFirstIndentLevel = 1
