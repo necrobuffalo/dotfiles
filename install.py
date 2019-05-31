@@ -17,6 +17,7 @@ FILE_MAP = {
     'sxhkd': '~/.config/sxhkd',
     'polybar': '~/.config/polybar',
     'dunst': '~/.config/dunst',
+    'git_template': '~/.git_template',
 }
 
 def copy_file(filename, dest):
