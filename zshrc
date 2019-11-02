@@ -114,6 +114,16 @@ clear_pyc () {
     find $1 -name '*.pyc' -delete -print
 }
 
+############
+# AUTOJUMP #
+############
+if which fasd >/dev/null; then
+    eval "$(fasd --init auto)"
+else
+    [[ -f /usr/local/etc/profile.d/z.sh ]] && . /usr/local/etc/profile.d/z.sh
+    [[ -f ~/src/z/z.sh ]] && . ~/src/z/z.sh
+fi
+
 ##########
 # EXTRAS #
 ##########
@@ -123,13 +133,10 @@ elif [[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
     . /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 [[ -f ~/.wechallrc ]] && . ~/.wechallrc
-[[ -f /usr/local/etc/profile.d/z.sh ]] && . /usr/local/etc/profile.d/z.sh
-[[ -f ~/src/z/z.sh ]] && . ~/src/z/z.sh
 [[ -f ~/.fzf.zsh ]] && . ~/.fzf.zsh
+
 # Source machine-specific configuration.
 [[ -f ~/.localrc ]] && . ~/.localrc
 
 # Squash any nonzero return from sourcing stuff (localrc might not exist)
 true
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
