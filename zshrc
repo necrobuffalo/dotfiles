@@ -74,8 +74,9 @@ else
 fi
 
 # QOL
-alias which='whence -a'
+alias ne='nix-env'
 alias tf='terraform'
+alias which='whence -a'
 
 # git
 alias ga='git add'

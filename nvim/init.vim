@@ -46,6 +46,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'ElmCast/elm-vim'
 " Go syntax highlighting
 Plug 'fatih/vim-go'
+" Nix/NixOS
+Plug 'LnL7/vim-nix'
 " Rust syntax highlighting.
 Plug 'rust-lang/rust.vim'
 " Terraform syntax highlighting.
@@ -153,6 +155,15 @@ augroup filetype_make
   autocmd!
   autocmd FileType make setlocal
     \ noexpandtab
+augroup END
+
+" nix
+augroup filetype_nix
+  autocmd!
+  autocmd FileType make setlocal
+    \ tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
 augroup END
 
 " php
