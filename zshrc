@@ -22,9 +22,13 @@ setopt prompt_subst   # expand variables in prompt
 ####################
 # DEFAULT PROGRAMS #
 ####################
-export EDITOR=vim
+export EDITOR='code -w'  # default editor
+# command for emacsclient to run if unable to contact the server.
+# leaving this empty should force it to start a new server.
+# https://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
+export ALTERNATE_EDITOR=''
 export PAGER=less
-export BROWSER=google-chrome
+export BROWSER=firefox
 
 #########################
 # ENVIRONMENT VARIABLES #
@@ -32,9 +36,8 @@ export BROWSER=google-chrome
 export GOPATH=~/go
 # python is in a weird place if using homebrew
 [[ $(uname) == 'Darwin' ]] && export PATH=/usr/local/opt/python/libexec/bin:${PATH}
-export PATH=~/bin:~/.fzf/bin:~/go/bin:~/.local/bin:${PATH}
+export PATH=~/bin:~/.fzf/bin:~/go/bin:~/.gem/ruby/2.5.0/bin:~/.local/bin:${PATH}
 export WORKON_HOME=~/.venvs
-export PATH=~/src/arcanist/arcanist/bin:${PATH}
 
 ############
 # VCS_INFO #
@@ -54,7 +57,9 @@ precmd_functions+=( precmd_vcs_info )
 ##########
 PROMPT="%(?.%F{green}.%F{red})[%D{%I:%M:%S %p}]%f %F{red}%m%f:%F{cyan}%~%f \${vcs_info_msg_0_}
 %# "
-RPROMPT="%(?..:()"
+# rprompt makes copying out of the terminal weird
+#RPROMPT="%(?..:()"
+RPROMPT=""
 
 ###########
 # ALIASES #
@@ -84,9 +89,12 @@ alias gc='git commit'
 alias gco='git checkout'
 
 # editors
-alias vim='nvim'
-alias e='emacsclient -nw'
-alias emacs='emacs -nw'
+if which nvim >/dev/null; then
+    alias vim='nvim'
+fi
+# -n to prevent emacsclient from blocking, unless we're calling it from sudoedit etc.
+alias e='emacsclient -n'
+alias emacs='emacs -n'
 
 # typos
 alias pamcan='pacman'
@@ -104,11 +112,17 @@ weather () {
     curl wttr.in/${1:-pdx}
 }
 flushcache () {
+    # flush dns cache
     if [[ -f /usr/bin/dscacheutil ]]; then
+        # macos
+        # might be out of date, see
+        # https://help.dreamhost.com/hc/en-us/articles/214981288-Flushing-your-DNS-cache-in-Mac-OS-X-and-Linux
         sudo /usr/bin/dscacheutil -flushcache
     else
+        # linux
         service nscd restart
     fi
+    # windows: ipconfig /flushdns
 }
 clear_pyc () {
     find $1 -name '*.pyc' -delete -print
@@ -117,6 +131,7 @@ clear_pyc () {
 ############
 # AUTOJUMP #
 ############
+# prefer fasd on nixos, fall back to z if needed
 if which fasd >/dev/null; then
     eval "$(fasd --init auto)"
 else
